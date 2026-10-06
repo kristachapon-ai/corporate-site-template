@@ -122,8 +122,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </td>
 
             <td>
-              →
-            </td>
+  <a
+    href="/admin/quote.html?id=${encodeURIComponent(request.id)}"
+    class="admin-table-link"
+    aria-label="เปิดคำขอ ${escapeHTML(request.request_number)}"
+  >
+    →
+  </a>
+</td>
           </tr>
         `;
       })
