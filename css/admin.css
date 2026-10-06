@@ -823,3 +823,56 @@ body {
   color: #177245;
   border: 1px solid #a9dfbf;
 }
+/* ========================================
+   ADMIN — VIVID STATUS BADGES
+======================================== */
+
+.quote-status-badge {
+  min-width: max-content;
+  padding: 7px 14px;
+
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--radius-full);
+
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+/* NEW — ยังไม่ได้ทำ */
+.quote-status-badge.status-new {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+}
+
+/* QUOTING — กำลังทำ */
+.quote-status-badge.status-quoting {
+  background: #ff7a00;
+  border-color: #ff7a00;
+  color: #ffffff;
+}
+
+/* SENT — ส่งแล้ว */
+.quote-status-badge.status-sent {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* FOLLOW UP — รอติดตาม */
+.quote-status-badge.status-follow_up {
+  background: #facc15;
+  border-color: #facc15;
+  color: #231f20;
+}
+
+/* CLOSED — ปิดงาน */
+.quote-status-badge.status-closed {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
