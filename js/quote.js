@@ -233,17 +233,77 @@ document.addEventListener("DOMContentLoaded", () => {
     editButton.addEventListener("click", closeReview);
     backdrop.addEventListener("click", closeReview);
 
-    confirmButton.addEventListener("click", () => {
-      /*
-        V1:
-        ระบบ Submit จริงและ Database
-        จะเชื่อมในขั้นตอนถัดไป
+     confirmButton.addEventListener("click", async () => {
+      if (confirmButton.disabled) return;
 
-        ตอนนี้ปุ่มนี้ยังไม่ส่งข้อมูลออกจากเว็บไซต์
-      */
+      const originalHTML = confirmButton.innerHTML;
 
-      confirmButton.textContent =
-        "SUBMIT SYSTEM — NEXT STEP";
+      const payload = {
+        contactName: form.elements["contactName"].value.trim(),
+        position: form.elements["position"].value.trim(),
+        organization: form.elements["organization"].value.trim(),
+        email: form.elements["email"].value.trim(),
+        phone: form.elements["phone"].value.trim(),
+        lineId: form.elements["lineId"].value.trim(),
+
+        eventType: form.elements["eventType"].value,
+        duration: form.elements["duration"].value,
+        eventDate: form.elements["eventDate"].value,
+        venue: form.elements["venue"].value.trim(),
+        participants: form.elements["participants"].value,
+        budget: form.elements["budget"].value,
+        objectives: form.elements["objectives"].value.trim(),
+        eventNote: form.elements["eventNote"].value.trim(),
+
+        legalName: form.elements["legalName"].value.trim(),
+        taxId: form.elements["taxId"].value.trim(),
+        branch: form.elements["branch"].value.trim(),
+        quotationAddress: form.elements["quotationAddress"].value.trim(),
+        district: form.elements["district"].value.trim(),
+        area: form.elements["area"].value.trim(),
+        province: form.elements["province"].value.trim(),
+        postalCode: form.elements["postalCode"].value.trim(),
+        quotationEmail: form.elements["quotationEmail"].value.trim(),
+        documentContact: form.elements["documentContact"].value.trim()
+      };
+
+      confirmButton.disabled = true;
+      confirmButton.textContent = "SUBMITTING...";
+
+      try {
+        const response = await fetch("/api/quote", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.error || "Unable to submit quote request."
+          );
+        }
+
+        confirmButton.textContent =
+          `SUBMITTED — ${result.requestNumber}`;
+
+        editButton.disabled = true;
+        closeButton.disabled = true;
+
+        form.reset();
+      } catch (error) {
+        console.error("Quote submission error:", error);
+
+        confirmButton.disabled = false;
+        confirmButton.innerHTML = originalHTML;
+
+        alert(
+          "ไม่สามารถส่งคำขอใบเสนอราคาได้ กรุณาลองใหม่อีกครั้ง"
+        );
+      }
     });
   }
 
