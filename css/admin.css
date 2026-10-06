@@ -455,6 +455,7 @@ body {
 
 .admin-login-heading {
   position: relative;
+  display: flow-root;
   padding: 42px 40px 34px;
   background: var(--color-primary);
   color: var(--color-white);
