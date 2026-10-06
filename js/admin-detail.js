@@ -4,7 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const statusElement =
     document.getElementById("detail-status");
+const statusSelect =
+  document.getElementById("quote-status");
 
+const updateStatusButton =
+  document.getElementById("update-status-button");
   const contentElement =
     document.getElementById("quote-detail-content");
 
@@ -148,49 +152,16 @@ document.addEventListener("DOMContentLoaded", () => {
       : "-";
   }
 
-  function formatQuotationAddress(quote) {
-    const parts = [];
-
-    if (quote.quotation_address) {
-      parts.push(
-        String(quote.quotation_address).trim()
-      );
-    }
-
-    if (quote.district) {
-      parts.push(
-        `ต.${String(quote.district).trim()}`
-      );
-    }
-
-    if (quote.area) {
-      parts.push(
-        `อ.${String(quote.area).trim()}`
-      );
-    }
-
-    if (quote.province) {
-      parts.push(
-        `จ.${String(quote.province).trim()}`
-      );
-    }
-
-    if (quote.postal_code) {
-      parts.push(
-        String(quote.postal_code).trim()
-      );
-    }
-
-    return parts.length
-      ? parts.join(" ")
-      : "-";
-  }
+  
   function renderQuote(quote) {
     requestNumberElement.textContent =
       quote.request_number || "-";
 
     statusElement.textContent =
       formatStatus(quote.status);
+      if (statusSelect) {
+  statusSelect.value = quote.status || "new";
+}
 
     contentElement.innerHTML = `
       <section class="admin-detail-group">
@@ -447,6 +418,62 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+if (updateStatusButton && statusSelect) {
+  updateStatusButton.addEventListener("click", async () => {
+    const id = new URLSearchParams(
+      window.location.search
+    ).get("id");
 
+    if (!id) {
+      alert("ไม่พบ Quote Request ID");
+      return;
+    }
+
+    updateStatusButton.disabled = true;
+    updateStatusButton.textContent = "UPDATING...";
+
+    try {
+      const response = await fetch(
+        `/api/admin/detail?id=${encodeURIComponent(id)}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            status: statusSelect.value
+          })
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.error || "Unable to update status."
+        );
+      }
+
+      statusElement.textContent =
+        formatStatus(result.status);
+
+      alert("อัปเดตสถานะเรียบร้อยแล้ว");
+    } catch (error) {
+      console.error(
+        "Quote status update error:",
+        error
+      );
+
+      alert(
+        "ไม่สามารถอัปเดตสถานะได้ กรุณาลองใหม่"
+      );
+    } finally {
+      updateStatusButton.disabled = false;
+      updateStatusButton.textContent =
+        "UPDATE STATUS";
+    }
+  });
+}
   loadQuoteDetail();
 });
