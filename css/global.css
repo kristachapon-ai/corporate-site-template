@@ -2347,3 +2347,57 @@ body.lightbox-open {
   }
 
 }
+/* =========================
+   PORTFOLIO PROJECT POLISH
+========================== */
+
+/* กระชับพื้นที่หัวโปรเจกต์ */
+.project-meta {
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+/* เลขโปรเจกต์ */
+.project-number {
+  align-self: end;
+  padding-bottom: 6px;
+
+  font-family: var(--font-heading);
+  font-weight: 900;
+  line-height: 1;
+
+  color: var(--color-accent);
+}
+
+/* ข้อมูลด้านขวาให้ลงแนวเดียวกับหัวเรื่อง */
+.project-details {
+  align-self: end;
+  padding-bottom: 2px;
+}
+
+/* Slider ไม่ต้องมี margin บนซ้ำ
+   เพราะตอนนี้ Slider ทำหน้าที่เป็น Cover แล้ว */
+.project-main-slider {
+  margin-top: 0;
+}
+
+
+/* =========================
+   PORTFOLIO MOBILE POLISH
+========================== */
+
+@media (max-width: 600px) {
+
+  .project-meta {
+    margin-bottom: 28px;
+  }
+
+  .project-number {
+    padding-bottom: 0;
+  }
+
+  .project-main-slider {
+    margin-top: 0;
+  }
+
+}
