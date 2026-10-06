@@ -1,0 +1,72 @@
+:root {
+  /* =========================
+     BRAND COLORS
+     Change these values for each client
+  ========================== */
+
+  --color-primary: #231f20;
+  --color-primary-soft: #333333;
+
+  --color-accent: #f4511e;
+  --color-accent-hover: #d94113;
+
+  --color-white: #ffffff;
+  --color-background: #ffffff;
+  --color-background-soft: #f7f7f7;
+
+  --color-text: #231f20;
+  --color-text-muted: #6b6b6b;
+  --color-border: #e5e5e5;
+
+
+  /* =========================
+     TYPOGRAPHY
+  ========================== */
+
+  --font-primary: Arial, Helvetica, sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 3rem;
+  --font-size-hero: clamp(3rem, 8vw, 7rem);
+
+
+  /* =========================
+     LAYOUT
+  ========================== */
+
+  --container-width: 1200px;
+  --container-padding: 24px;
+
+  --section-space: 100px;
+
+
+  /* =========================
+     BORDER RADIUS
+  ========================== */
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+
+  /* =========================
+     SHADOW
+  ========================== */
+
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.12);
+
+
+  /* =========================
+     ANIMATION
+  ========================== */
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.35s ease;
+}
