@@ -86,17 +86,28 @@ const updateStatusButton =
 
 
   function formatStatus(status) {
-    if (status === "new") {
-      return "NEW";
-    }
+  if (status === "new") {
+    return "NEW — ยังไม่ได้ทำ";
+  }
 
-    if (status === "in_progress") {
-      return "IN PROGRESS";
-    }
+  if (status === "quoting") {
+    return "QUOTING — กำลังทำ";
+  }
 
-    if (status === "completed") {
-      return "COMPLETED";
-    }
+  if (status === "sent") {
+    return "SENT — ส่งแล้ว";
+  }
+
+  if (status === "follow_up") {
+    return "FOLLOW UP — รอติดตาม";
+  }
+
+  if (status === "closed") {
+    return "CLOSED — ปิดงาน";
+  }
+
+  return String(status || "-").toUpperCase();
+}
 
     return String(status || "-").toUpperCase();
   }
@@ -159,6 +170,8 @@ const updateStatusButton =
 
     statusElement.textContent =
       formatStatus(quote.status);
+    statusElement.className =
+  `quote-status-badge status-${quote.status || "new"}`;
       if (statusSelect) {
   statusSelect.value = quote.status || "new";
 }
@@ -457,6 +470,8 @@ if (updateStatusButton && statusSelect) {
 
       statusElement.textContent =
         formatStatus(result.status);
+      statusElement.className =
+  `quote-status-badge status-${result.status}`;
 
       alert("อัปเดตสถานะเรียบร้อยแล้ว");
     } catch (error) {
