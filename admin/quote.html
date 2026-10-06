@@ -71,9 +71,46 @@
           </h2>
         </div>
 
-        <div id="detail-status">
-          —
-        </div>
+        <div class="admin-status-control">
+
+  <label for="quote-status">
+    QUOTE STATUS
+  </label>
+
+  <select id="quote-status">
+    <option value="new">
+      NEW — ยังไม่ได้ทำ
+    </option>
+
+    <option value="quoting">
+      QUOTING — กำลังทำ
+    </option>
+
+    <option value="sent">
+      SENT — ส่งแล้ว
+    </option>
+
+    <option value="follow_up">
+      FOLLOW UP — รอติดตาม
+    </option>
+
+    <option value="closed">
+      CLOSED — ปิดงาน
+    </option>
+  </select>
+
+  <button
+    type="button"
+    id="update-status-button"
+  >
+    UPDATE STATUS
+  </button>
+
+  <div id="detail-status">
+    —
+  </div>
+
+</div>
 
       </div>
 
