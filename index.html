@@ -44,14 +44,16 @@
         >
       </a>
 
-      <nav class="main-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Our Works</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <nav class="main-nav" id="main-nav">
+
+  <a href="#home">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Our Works</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Contact</a>
+
+</nav>
 
       <a class="header-contact" href="#contact">
         CONTACT US
@@ -61,6 +63,7 @@
   type="button"
   aria-label="Open menu"
   aria-expanded="false"
+  aria-controls="main-nav""
 >
   <span></span>
   <span></span>
@@ -344,6 +347,28 @@
 
 </section>
   </main>
+<script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.querySelector(".main-nav");
+  const navLinks = document.querySelectorAll(".main-nav a");
 
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("is-open");
+
+    menuToggle.classList.toggle("is-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", isOpen);
+
+    document.body.classList.toggle("menu-open", isOpen);
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("is-open");
+      menuToggle.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    });
+  });
+</script>
 </body>
 </html>
