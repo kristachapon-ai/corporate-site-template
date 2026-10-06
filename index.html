@@ -771,6 +771,190 @@
 
     updateGallery();
   });
+    /* =========================
+     PROJECT LIGHTBOX
+  ========================== */
+
+  const lightbox = document.querySelector("#project-lightbox");
+
+  if (lightbox) {
+    const lightboxImage = lightbox.querySelector(".lightbox-image");
+    const lightboxClose = lightbox.querySelector(".lightbox-close");
+    const lightboxPrev = lightbox.querySelector(".lightbox-prev");
+    const lightboxNext = lightbox.querySelector(".lightbox-next");
+    const lightboxBackdrop = lightbox.querySelector(".lightbox-backdrop");
+    const lightboxCurrent = lightbox.querySelector(".lightbox-current");
+    const lightboxTotal = lightbox.querySelector(".lightbox-total");
+
+    let lightboxImages = [];
+    let lightboxIndex = 0;
+
+    let lightboxStartX = 0;
+    let lightboxCurrentX = 0;
+    let lightboxDragging = false;
+
+
+    /* UPDATE IMAGE */
+
+    function updateLightbox() {
+      if (lightboxImages.length === 0) return;
+
+      const currentImage = lightboxImages[lightboxIndex];
+
+      lightboxImage.src = currentImage.src;
+      lightboxImage.alt = currentImage.alt || "";
+
+      lightboxCurrent.textContent =
+        String(lightboxIndex + 1).padStart(2, "0");
+
+      lightboxTotal.textContent =
+        String(lightboxImages.length).padStart(2, "0");
+    }
+
+
+    /* OPEN */
+
+    function openLightbox(gallery, clickedImage) {
+      lightboxImages = Array.from(
+        gallery.querySelectorAll(".gallery-slide img")
+      );
+
+      lightboxIndex = lightboxImages.indexOf(clickedImage);
+
+      if (lightboxIndex < 0) {
+        lightboxIndex = 0;
+      }
+
+      updateLightbox();
+
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+
+      document.body.classList.add("lightbox-open");
+    }
+
+
+    /* CLOSE */
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+
+      document.body.classList.remove("lightbox-open");
+    }
+
+
+    /* NEXT */
+
+    function nextLightboxImage() {
+      lightboxIndex++;
+
+      if (lightboxIndex >= lightboxImages.length) {
+        lightboxIndex = 0;
+      }
+
+      updateLightbox();
+    }
+
+
+    /* PREVIOUS */
+
+    function previousLightboxImage() {
+      lightboxIndex--;
+
+      if (lightboxIndex < 0) {
+        lightboxIndex = lightboxImages.length - 1;
+      }
+
+      updateLightbox();
+    }
+
+
+    /* CLICK GALLERY IMAGE */
+
+    document.querySelectorAll(".project-gallery-slider").forEach((gallery) => {
+      const images = gallery.querySelectorAll(".gallery-slide img");
+
+      images.forEach((image) => {
+        image.addEventListener("click", () => {
+          openLightbox(gallery, image);
+        });
+      });
+    });
+
+
+    /* BUTTONS */
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightboxBackdrop.addEventListener("click", closeLightbox);
+
+    lightboxPrev.addEventListener("click", previousLightboxImage);
+
+    lightboxNext.addEventListener("click", nextLightboxImage);
+
+
+    /* KEYBOARD */
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("is-open")) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousLightboxImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextLightboxImage();
+      }
+    });
+
+
+    /* SWIPE / DRAG */
+
+    lightboxImage.addEventListener("pointerdown", (event) => {
+      lightboxDragging = true;
+
+      lightboxStartX = event.clientX;
+      lightboxCurrentX = event.clientX;
+
+      lightboxImage.setPointerCapture(event.pointerId);
+    });
+
+    lightboxImage.addEventListener("pointermove", (event) => {
+      if (!lightboxDragging) return;
+
+      lightboxCurrentX = event.clientX;
+    });
+
+    lightboxImage.addEventListener("pointerup", (event) => {
+      if (!lightboxDragging) return;
+
+      lightboxDragging = false;
+
+      const distance =
+        lightboxCurrentX - lightboxStartX;
+
+      if (Math.abs(distance) > 50) {
+        if (distance < 0) {
+          nextLightboxImage();
+        } else {
+          previousLightboxImage();
+        }
+      }
+
+      if (lightboxImage.hasPointerCapture(event.pointerId)) {
+        lightboxImage.releasePointerCapture(event.pointerId);
+      }
+    });
+
+    lightboxImage.addEventListener("pointercancel", () => {
+      lightboxDragging = false;
+    });
+  }
 </script>
 </body>
 </html>
