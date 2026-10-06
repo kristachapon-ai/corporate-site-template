@@ -836,11 +836,15 @@
     /* CLOSE */
 
     function closeLightbox() {
-      lightbox.classList.remove("is-open");
-      lightbox.setAttribute("aria-hidden", "true");
+  if (document.activeElement) {
+    document.activeElement.blur();
+  }
 
-      document.body.classList.remove("lightbox-open");
-    }
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("lightbox-open");
+}
 
 
     /* NEXT */
