@@ -1,0 +1,125 @@
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   CONTAINER
+========================== */
+
+.container {
+  width: min(
+    calc(100% - (var(--container-padding) * 2)),
+    var(--container-width)
+  );
+
+  margin-inline: auto;
+}
+
+
+/* =========================
+   SECTIONS
+========================== */
+
+section {
+  padding: var(--section-space) 0;
+}
+
+
+/* =========================
+   TYPOGRAPHY
+========================== */
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 24px;
+}
+
+.section-label {
+  color: var(--color-accent);
+
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+
+/* =========================
+   BUTTONS
+========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding: 0 28px;
+
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-dark {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+
+/* =========================
+   NG BRAND ELEMENT
+========================== */
+
+.ng-slash {
+  width: 48px;
+  height: 8px;
+
+  background: var(--color-accent);
+
+  transform: skewX(-20deg);
+}
