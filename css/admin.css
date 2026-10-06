@@ -736,7 +736,7 @@ body {
   transform: none;
 }
 
-.admin-status-control #detail-status {
+.admin-status-control .quote-status-badge {
   grid-column: 1 / -1;
 
   display: inline-flex;
@@ -771,4 +771,60 @@ body {
   #quote-status {
     min-width: 0;
   }
+}
+/* ========================================
+   ADMIN — QUOTE STATUS BADGES
+======================================== */
+
+.quote-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  min-height: 28px;
+  padding: 5px 12px;
+
+  border-radius: var(--radius-full);
+
+  font-family: var(--font-heading);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+
+/* NEW — ยังไม่ได้ทำ */
+.quote-status-badge.status-new {
+  background: #fff0ec;
+  color: #d9360b;
+  border: 1px solid #ffc8b8;
+}
+
+/* QUOTING — กำลังทำ */
+.quote-status-badge.status-quoting {
+  background: #fff4e5;
+  color: #b85c00;
+  border: 1px solid #ffd29a;
+}
+
+/* SENT — ส่งแล้ว */
+.quote-status-badge.status-sent {
+  background: #eaf3ff;
+  color: #1769aa;
+  border: 1px solid #b8d8ff;
+}
+
+/* FOLLOW UP — รอติดตาม */
+.quote-status-badge.status-follow_up {
+  background: #fff8d8;
+  color: #8a6800;
+  border: 1px solid #f1d66a;
+}
+
+/* CLOSED — ปิดงาน */
+.quote-status-badge.status-closed {
+  background: #e9f8ef;
+  color: #177245;
+  border: 1px solid #a9dfbf;
 }
