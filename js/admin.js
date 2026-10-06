@@ -176,5 +176,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  const logoutButton = document.querySelector(
+    "#admin-logout-button"
+  );
+
+  if (logoutButton) {
+    logoutButton.addEventListener("click", async () => {
+      logoutButton.disabled = true;
+      logoutButton.textContent = "LOGGING OUT...";
+
+      try {
+        const response = await fetch(
+          "/api/admin/logout",
+          {
+            method: "POST",
+            headers: {
+              "Accept": "application/json"
+            }
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Logout failed.");
+        }
+
+        window.location.href = "/admin-login.html";
+      } catch (error) {
+        console.error("Admin logout error:", error);
+
+        logoutButton.disabled = false;
+        logoutButton.textContent = "LOGOUT";
+
+        alert("ไม่สามารถออกจากระบบได้ กรุณาลองใหม่");
+      }
+    });
+  }
+
+
   loadQuoteRequests();
 });
