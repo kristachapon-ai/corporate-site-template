@@ -969,3 +969,93 @@ p {
   }
 
 }
+/* =========================
+   SERVICES MOBILE POLISH
+========================== */
+
+@media (max-width: 600px) {
+
+  .services-section {
+    padding: 72px 0;
+  }
+
+  .services-header {
+    gap: 22px;
+    margin-bottom: 38px;
+  }
+
+  .services-header .ng-slash {
+    width: 38px;
+    height: 6px;
+    margin-bottom: 18px;
+  }
+
+  .services-header .section-label {
+    margin-bottom: 12px;
+    font-size: 0.7rem;
+  }
+
+  .services-title {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  .services-intro {
+    max-width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.75;
+  }
+
+
+  /* SERVICE CARDS */
+
+  .service-card {
+    min-height: 0;
+
+    padding: 34px 24px 32px;
+  }
+
+  .service-number {
+    top: 18px;
+    right: 20px;
+
+    font-size: 5.5rem;
+
+    opacity: 0.8;
+  }
+
+  .service-card-content {
+    max-width: 100%;
+  }
+
+  .service-type {
+    margin-bottom: 12px;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+  }
+
+  .service-card h3 {
+    max-width: 80%;
+
+    margin-bottom: 18px;
+
+    font-size: clamp(1.8rem, 8.5vw, 2.5rem);
+    line-height: 0.98;
+  }
+
+  .service-card-content > p:not(.service-type) {
+    max-width: 95%;
+
+    margin-bottom: 24px;
+
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .service-card a {
+    font-size: 0.7rem;
+  }
+
+}
