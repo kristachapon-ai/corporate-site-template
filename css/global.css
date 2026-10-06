@@ -670,3 +670,26 @@ h4 {
   }
 
 }
+/* =========================
+   TYPOGRAPHY SYSTEM
+========================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.main-nav,
+.header-contact,
+.btn,
+.section-label,
+.hero-eyebrow,
+.about-link {
+  font-family: var(--font-heading);
+}
+
+body,
+p {
+  font-family: var(--font-primary);
+}
