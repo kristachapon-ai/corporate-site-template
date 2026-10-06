@@ -30,20 +30,26 @@ export async function onRequestGet(context) {
     const requests = result.results || [];
 
     const summary = {
-      new: 0,
-      inProgress: 0,
-      completed: 0
-    };
+  new: 0,
+  quoting: 0,
+  sent: 0,
+  followUp: 0,
+  closed: 0
+};
 
-    for (const request of requests) {
-      if (request.status === "new") {
-        summary.new += 1;
-      } else if (request.status === "in_progress") {
-        summary.inProgress += 1;
-      } else if (request.status === "completed") {
-        summary.completed += 1;
-      }
-    }
+for (const request of requests) {
+  if (request.status === "new") {
+    summary.new += 1;
+  } else if (request.status === "quoting") {
+    summary.quoting += 1;
+  } else if (request.status === "sent") {
+    summary.sent += 1;
+  } else if (request.status === "follow_up") {
+    summary.followUp += 1;
+  } else if (request.status === "closed") {
+    summary.closed += 1;
+  }
+}
 
     return jsonResponse({
       success: true,
