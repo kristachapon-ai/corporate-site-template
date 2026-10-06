@@ -710,22 +710,44 @@
     nextButton.addEventListener("click", nextSlide);
 
 
-    /* SWIPE / DRAG */
+        /* =========================
+       SWIPE / DRAG SLIDER
+    ========================== */
+
+    track.addEventListener("dragstart", (event) => {
+      event.preventDefault();
+    });
 
     track.addEventListener("pointerdown", (event) => {
       isDragging = true;
+
       startX = event.clientX;
       currentX = event.clientX;
 
+      track.style.transition = "none";
       track.style.cursor = "grabbing";
-      track.setPointerCapture(event.pointerId);
+
+      if (track.setPointerCapture) {
+        track.setPointerCapture(event.pointerId);
+      }
     });
+
 
     track.addEventListener("pointermove", (event) => {
       if (!isDragging) return;
 
       currentX = event.clientX;
+
+      const distance = currentX - startX;
+      const galleryWidth = gallery.offsetWidth;
+
+      const basePosition =
+        -(currentIndex * galleryWidth);
+
+      track.style.transform =
+        `translateX(${basePosition + distance}px)`;
     });
+
 
     track.addEventListener("pointerup", (event) => {
       if (!isDragging) return;
@@ -733,25 +755,53 @@
       isDragging = false;
 
       const distance = currentX - startX;
+      const galleryWidth = gallery.offsetWidth;
+
+      track.style.transition =
+        "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
 
       track.style.cursor = "";
 
-      if (Math.abs(distance) > 50) {
+      if (Math.abs(distance) > galleryWidth * 0.12) {
+
         if (distance < 0) {
-          nextSlide();
+          currentIndex++;
+
+          if (currentIndex >= slides.length) {
+            currentIndex = 0;
+          }
+
         } else {
-          previousSlide();
+          currentIndex--;
+
+          if (currentIndex < 0) {
+            currentIndex = slides.length - 1;
+          }
         }
       }
 
-      if (track.hasPointerCapture(event.pointerId)) {
+      updateGallery();
+
+      if (
+        track.hasPointerCapture &&
+        track.hasPointerCapture(event.pointerId)
+      ) {
         track.releasePointerCapture(event.pointerId);
       }
     });
 
+
     track.addEventListener("pointercancel", () => {
+      if (!isDragging) return;
+
       isDragging = false;
+
+      track.style.transition =
+        "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+
       track.style.cursor = "";
+
+      updateGallery();
     });
 
 
