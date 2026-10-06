@@ -878,3 +878,85 @@ body {
   border-color: #16a34a;
   color: #ffffff;
 }
+/* ========================================
+   ADMIN — PAGINATION
+======================================== */
+
+.admin-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 18px 0 0;
+}
+
+#pagination-info {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.admin-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-pagination button {
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+
+  background: #ffffff;
+  color: var(--color-text);
+
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-pagination button:hover:not(:disabled) {
+  background: #231f20;
+  border-color: #231f20;
+  color: #ffffff;
+}
+
+.admin-pagination button.is-active {
+  background: #ff4f1f;
+  border-color: #ff4f1f;
+  color: #ffffff;
+}
+
+.admin-pagination button:disabled {
+  cursor: default;
+  opacity: 0.35;
+}
+
+@media (max-width: 700px) {
+  .admin-pagination {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .admin-pagination-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
