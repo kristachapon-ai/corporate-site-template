@@ -748,9 +748,6 @@ body {
 
   border-radius: var(--radius-full);
 
-  background: rgba(255, 79, 32, 0.1);
-  color: var(--color-accent);
-
   font-family: var(--font-heading);
   font-size: 0.58rem;
   font-weight: 800;
