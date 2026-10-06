@@ -54,21 +54,28 @@ function formatDateTime(value) {
 }
 
   function formatStatus(status) {
-    if (status === "new") {
-      return "NEW";
-    }
-
-    if (status === "in_progress") {
-      return "IN PROGRESS";
-    }
-
-    if (status === "completed") {
-      return "COMPLETED";
-    }
-
-    return String(status || "-").toUpperCase();
+  if (status === "new") {
+    return "NEW — ยังไม่ได้ทำ";
   }
 
+  if (status === "quoting") {
+    return "QUOTING — กำลังทำ";
+  }
+
+  if (status === "sent") {
+    return "SENT — ส่งแล้ว";
+  }
+
+  if (status === "follow_up") {
+    return "FOLLOW UP — รอติดตาม";
+  }
+
+  if (status === "closed") {
+    return "CLOSED — ปิดงาน";
+  }
+
+  return String(status || "-").toUpperCase();
+}
 
   function updateSummary(summary) {
     if (summaryCards.length < 3) return;
@@ -136,10 +143,16 @@ function formatDateTime(value) {
             </td>
       
             <td>
-              ${escapeHTML(
-                formatStatus(request.status)
-              )}
-            </td>
+  <span
+    class="quote-status-badge status-${escapeHTML(
+      request.status || "new"
+    )}"
+  >
+    ${escapeHTML(
+      formatStatus(request.status)
+    )}
+  </span>
+</td>
 
             <td>
   <a
