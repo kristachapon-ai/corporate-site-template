@@ -106,9 +106,6 @@ const updateStatusButton =
     return "CLOSED — ปิดงาน";
   }
 
-  return String(status || "-").toUpperCase();
-}
-
     return String(status || "-").toUpperCase();
   }
 
