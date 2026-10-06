@@ -78,17 +78,23 @@ function formatDateTime(value) {
 }
 
   function updateSummary(summary) {
-    if (summaryCards.length < 3) return;
+  if (summaryCards.length < 5) return;
 
-    summaryCards[0].textContent =
-      summary.new ?? 0;
+  summaryCards[0].textContent =
+    summary.new ?? 0;
 
-    summaryCards[1].textContent =
-      summary.inProgress ?? 0;
+  summaryCards[1].textContent =
+    summary.quoting ?? 0;
 
-    summaryCards[2].textContent =
-      summary.completed ?? 0;
-  }
+  summaryCards[2].textContent =
+    summary.sent ?? 0;
+
+  summaryCards[3].textContent =
+    summary.followUp ?? 0;
+
+  summaryCards[4].textContent =
+    summary.closed ?? 0;
+}
 
 
   function renderRequests(requests) {
