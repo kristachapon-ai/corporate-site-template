@@ -35,7 +35,23 @@ document.addEventListener("DOMContentLoaded", () => {
       year: "numeric"
     }).format(date);
   }
+function formatDateTime(value) {
+  if (!value) return "-";
 
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("th-TH", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  }).format(date);
+}
 
   function formatStatus(status) {
     if (status === "new") {
@@ -110,11 +126,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 formatDate(request.event_date)
               )}
             </td>
-
+              <td>
+  ${escapeHTML(
+    formatDateTime(request.created_at)
+  )}
+</td>
             <td>
               ${escapeHTML(request.participants)} คน
             </td>
-
+      
             <td>
               ${escapeHTML(
                 formatStatus(request.status)
