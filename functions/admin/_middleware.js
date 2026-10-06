@@ -1,8 +1,6 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
-  if (url.pathname === "/admin/login.html") {
-  return context.next();
-}
+
   const cookieHeader =
     context.request.headers.get("Cookie") || "";
 
@@ -10,9 +8,10 @@ export async function onRequest(context) {
     /(?:^|;\s*)ng_admin_session=([^;]+)/
   );
 
+  // ไม่มี Session → ไปหน้า Login ที่อยู่นอก /admin/
   if (!sessionMatch) {
     return Response.redirect(
-      `${url.origin}/admin/login.html`,
+      `${url.origin}/admin-login.html`,
       302
     );
   }
@@ -31,9 +30,10 @@ export async function onRequest(context) {
       .bind(token)
       .first();
 
+    // Session ไม่ถูกต้อง
     if (!session) {
       return Response.redirect(
-        `${url.origin}/admin/login.html`,
+        `${url.origin}/admin-login.html`,
         302
       );
     }
@@ -41,6 +41,7 @@ export async function onRequest(context) {
     const expiresAt =
       new Date(session.expires_at).getTime();
 
+    // Session หมดอายุ
     if (
       !Number.isFinite(expiresAt) ||
       expiresAt <= Date.now()
@@ -55,17 +56,19 @@ export async function onRequest(context) {
         .run();
 
       return Response.redirect(
-        `${url.origin}/admin/login.html`,
+        `${url.origin}/admin-login.html`,
         302
       );
     }
 
+    // Session ถูกต้อง → เข้า /admin/ ได้
     return context.next();
+
   } catch (error) {
     console.error("Admin guard error:", error);
 
     return Response.redirect(
-      `${url.origin}/admin/login.html`,
+      `${url.origin}/admin-login.html`,
       302
     );
   }
