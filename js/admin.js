@@ -88,7 +88,7 @@ function formatDateTime(value) {
     if (!Array.isArray(requests) || requests.length === 0) {
       tableBody.innerHTML = `
         <tr>
-          <td colspan="7">
+         <td colspan="8">
             ยังไม่มีคำขอใบเสนอราคา
           </td>
         </tr>
@@ -187,7 +187,7 @@ function formatDateTime(value) {
 
       tableBody.innerHTML = `
         <tr>
-          <td colspan="7">
+         <td colspan="8">
             ไม่สามารถโหลดข้อมูลคำขอใบเสนอราคาได้
           </td>
         </tr>
