@@ -804,6 +804,148 @@
       updateGallery();
     });
 
+        /* =========================
+       MOBILE TOUCH SWIPE
+    ========================== */
+
+    let touchStartX = 0;
+    let touchCurrentX = 0;
+    let touchStartY = 0;
+    let touchCurrentY = 0;
+    let isTouchDragging = false;
+    let isHorizontalSwipe = false;
+
+
+    track.addEventListener(
+      "touchstart",
+      (event) => {
+        if (event.touches.length !== 1) return;
+
+        const touch = event.touches[0];
+
+        touchStartX = touch.clientX;
+        touchCurrentX = touch.clientX;
+
+        touchStartY = touch.clientY;
+        touchCurrentY = touch.clientY;
+
+        isTouchDragging = true;
+        isHorizontalSwipe = false;
+
+        track.style.transition = "none";
+      },
+      { passive: true }
+    );
+
+
+    track.addEventListener(
+      "touchmove",
+      (event) => {
+        if (!isTouchDragging) return;
+        if (event.touches.length !== 1) return;
+
+        const touch = event.touches[0];
+
+        touchCurrentX = touch.clientX;
+        touchCurrentY = touch.clientY;
+
+        const distanceX = touchCurrentX - touchStartX;
+        const distanceY = touchCurrentY - touchStartY;
+
+
+        /* ตรวจว่าผู้ใช้กำลังปัดแนวนอนหรือเลื่อนหน้าแนวตั้ง */
+
+        if (!isHorizontalSwipe) {
+          if (
+            Math.abs(distanceX) > 8 &&
+            Math.abs(distanceX) > Math.abs(distanceY)
+          ) {
+            isHorizontalSwipe = true;
+          }
+        }
+
+
+        /* ถ้าเป็นการเลื่อนขึ้นลง ให้ browser ทำงานตามปกติ */
+
+        if (!isHorizontalSwipe) return;
+
+
+        /* ถ้าเป็นการปัดซ้ายขวา ให้ Slider รับ gesture */
+
+        event.preventDefault();
+
+        const galleryWidth = gallery.offsetWidth;
+
+        const basePosition =
+          -(currentIndex * galleryWidth);
+
+        track.style.transform =
+          `translateX(${basePosition + distanceX}px)`;
+      },
+      { passive: false }
+    );
+
+
+    track.addEventListener(
+      "touchend",
+      () => {
+        if (!isTouchDragging) return;
+
+        isTouchDragging = false;
+
+        const distanceX =
+          touchCurrentX - touchStartX;
+
+        const galleryWidth =
+          gallery.offsetWidth;
+
+        track.style.transition =
+          "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+
+
+        if (
+          isHorizontalSwipe &&
+          Math.abs(distanceX) > galleryWidth * 0.12
+        ) {
+
+          if (distanceX < 0) {
+            currentIndex++;
+
+            if (currentIndex >= slides.length) {
+              currentIndex = 0;
+            }
+
+          } else {
+            currentIndex--;
+
+            if (currentIndex < 0) {
+              currentIndex = slides.length - 1;
+            }
+          }
+        }
+
+
+        isHorizontalSwipe = false;
+
+        updateGallery();
+      },
+      { passive: true }
+    );
+
+
+    track.addEventListener(
+      "touchcancel",
+      () => {
+        isTouchDragging = false;
+        isHorizontalSwipe = false;
+
+        track.style.transition =
+          "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1)";
+
+        updateGallery();
+      },
+      { passive: true }
+    );
 
     /* KEYBOARD */
 
