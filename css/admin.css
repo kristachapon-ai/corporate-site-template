@@ -654,3 +654,121 @@ body {
   opacity: 0.6;
   cursor: wait;
 }
+/* ========================================
+   ADMIN — QUOTE STATUS CONTROL
+======================================== */
+
+.admin-status-control {
+  width: 320px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 10px;
+  align-items: end;
+}
+
+.admin-status-control label {
+  grid-column: 1 / -1;
+
+  margin: 0;
+
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+
+  color: var(--color-accent);
+}
+
+#quote-status {
+  width: 100%;
+  height: 42px;
+  padding: 0 38px 0 14px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-white);
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  outline: none;
+}
+
+#quote-status:focus {
+  border-color: var(--color-accent);
+}
+
+#update-status-button {
+  height: 42px;
+  padding: 0 18px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: var(--color-primary);
+  color: var(--color-white);
+
+  font-family: var(--font-heading);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+#update-status-button:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+#update-status-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+  transform: none;
+}
+
+.admin-status-control #detail-status {
+  grid-column: 1 / -1;
+
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+  min-height: 26px;
+  padding: 0 12px;
+
+  border-radius: var(--radius-full);
+
+  background: rgba(255, 79, 32, 0.1);
+  color: var(--color-accent);
+
+  font-family: var(--font-heading);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .admin-detail-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-status-control {
+    width: 100%;
+  }
+
+  #quote-status {
+    min-width: 0;
+  }
+}
