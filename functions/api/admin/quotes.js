@@ -1,6 +1,6 @@
 export async function onRequestGet(context) {
   try {
-    const { env } = context;
+    const { request, env } = context;
 
     if (!env.DB) {
       return jsonResponse(
@@ -11,6 +11,38 @@ export async function onRequestGet(context) {
         500
       );
     }
+
+    const url = new URL(request.url);
+
+    const pageParam = Number.parseInt(
+      url.searchParams.get("page"),
+      10
+    );
+
+    const page =
+      Number.isInteger(pageParam) && pageParam > 0
+        ? pageParam
+        : 1;
+
+    const pageSize = 10;
+    const offset = (page - 1) * pageSize;
+
+    const countResult = await env.DB.prepare(`
+      SELECT
+        COUNT(*) AS total,
+        SUM(CASE WHEN status = 'new' THEN 1 ELSE 0 END) AS new_count,
+        SUM(CASE WHEN status = 'quoting' THEN 1 ELSE 0 END) AS quoting_count,
+        SUM(CASE WHEN status = 'sent' THEN 1 ELSE 0 END) AS sent_count,
+        SUM(CASE WHEN status = 'follow_up' THEN 1 ELSE 0 END) AS follow_up_count,
+        SUM(CASE WHEN status = 'closed' THEN 1 ELSE 0 END) AS closed_count
+      FROM quote_requests
+    `).first();
+
+    const total = Number(countResult?.total || 0);
+    const totalPages = Math.max(
+      1,
+      Math.ceil(total / pageSize)
+    );
 
     const result = await env.DB.prepare(`
       SELECT
@@ -25,36 +57,33 @@ export async function onRequestGet(context) {
         created_at
       FROM quote_requests
       ORDER BY created_at DESC
-    `).all();
+      LIMIT ? OFFSET ?
+    `)
+      .bind(pageSize, offset)
+      .all();
 
     const requests = result.results || [];
 
     const summary = {
-  new: 0,
-  quoting: 0,
-  sent: 0,
-  followUp: 0,
-  closed: 0
-};
-
-for (const request of requests) {
-  if (request.status === "new") {
-    summary.new += 1;
-  } else if (request.status === "quoting") {
-    summary.quoting += 1;
-  } else if (request.status === "sent") {
-    summary.sent += 1;
-  } else if (request.status === "follow_up") {
-    summary.followUp += 1;
-  } else if (request.status === "closed") {
-    summary.closed += 1;
-  }
-}
+      new: Number(countResult?.new_count || 0),
+      quoting: Number(countResult?.quoting_count || 0),
+      sent: Number(countResult?.sent_count || 0),
+      followUp: Number(
+        countResult?.follow_up_count || 0
+      ),
+      closed: Number(countResult?.closed_count || 0)
+    };
 
     return jsonResponse({
       success: true,
       summary,
-      requests
+      requests,
+      pagination: {
+        page,
+        pageSize,
+        total,
+        totalPages
+      }
     });
   } catch (error) {
     console.error("Admin quote API error:", error);
@@ -68,8 +97,6 @@ for (const request of requests) {
     );
   }
 }
-
-
 export function onRequestPost() {
   return jsonResponse(
     {
