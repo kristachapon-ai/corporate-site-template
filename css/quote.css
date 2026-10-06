@@ -1,0 +1,461 @@
+/* ========================================
+   NG TRAINING — QUOTE BUILDER
+======================================== */
+
+
+/* ========================================
+   PAGE
+======================================== */
+
+.quote-page {
+  min-height: 100vh;
+  background: #f4f1ec;
+  color: var(--color-primary);
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.quote-hero {
+  padding: 72px 0 90px;
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.quote-back {
+  display: inline-block;
+  margin-bottom: 70px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.quote-back:hover {
+  color: var(--color-accent);
+}
+
+.quote-hero .section-label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.quote-title {
+  max-width: 1000px;
+  margin: 16px 0 32px;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 900;
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+}
+
+.quote-title span {
+  color: var(--color-accent);
+}
+
+.quote-description {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.quote-form-section {
+  padding: 110px 0 120px;
+}
+
+.quote-form {
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   STEP
+======================================== */
+
+.quote-step {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 70px;
+  padding: 70px 0;
+  border-top: 1px solid rgba(35, 31, 32, 0.18);
+}
+
+.quote-step:last-child {
+  border-bottom: 1px solid rgba(35, 31, 32, 0.18);
+}
+
+.quote-step-heading {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+}
+
+.quote-step-number {
+  padding-top: 4px;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.quote-step-heading p {
+  margin: 0 0 10px;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.quote-step-heading h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+
+/* ========================================
+   FIELDS
+======================================== */
+
+.quote-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+
+.quote-field {
+  min-width: 0;
+}
+
+.quote-field-full {
+  grid-column: 1 / -1;
+}
+
+.quote-field label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(35, 31, 32, 0.28);
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.quote-field input,
+.quote-field select {
+  min-height: 54px;
+  padding: 0 4px;
+}
+
+.quote-field textarea {
+  min-height: 120px;
+  padding: 14px 4px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.quote-field input::placeholder,
+.quote-field textarea::placeholder {
+  color: rgba(35, 31, 32, 0.38);
+}
+
+.quote-field select {
+  cursor: pointer;
+}
+
+
+/* ========================================
+   REVIEW
+======================================== */
+
+.quote-confirm {
+  max-width: 650px;
+}
+
+.quote-checkbox {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.quote-checkbox input {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--color-accent);
+}
+
+.quote-checkbox span {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.quote-submit {
+  display: flex;
+  width: 100%;
+  min-height: 78px;
+  margin-top: 36px;
+  padding: 0 28px;
+  border: 0;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    padding 0.25s ease;
+}
+
+.quote-submit:hover {
+  padding-left: 34px;
+  padding-right: 34px;
+  background: var(--color-primary);
+}
+
+.quote-submit span {
+  font-size: 1.6rem;
+}
+
+.quote-submit-note {
+  margin: 20px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+
+/* ========================================
+   DIRECT CONTACT
+======================================== */
+
+.quote-contact {
+  padding: 90px 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.quote-contact > .container > p {
+  margin: 0 0 16px;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.quote-contact h2 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.quote-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 42px;
+}
+
+.quote-contact-actions a {
+  display: inline-flex;
+  min-height: 54px;
+  padding: 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  align-items: center;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.quote-contact-actions a:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+  .quote-hero {
+    padding: 60px 0 72px;
+  }
+
+  .quote-back {
+    margin-bottom: 54px;
+  }
+
+  .quote-title {
+    font-size: clamp(3.4rem, 10vw, 6rem);
+  }
+
+  .quote-form-section {
+    padding: 80px 0 90px;
+  }
+
+  .quote-step {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 56px 0;
+  }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+  .quote-hero {
+    padding: 36px 0 58px;
+  }
+
+  .quote-back {
+    margin-bottom: 46px;
+    font-size: 0.58rem;
+  }
+
+  .quote-title {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    font-size: clamp(2.8rem, 13vw, 4rem);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+  }
+
+  .quote-description {
+    max-width: 95%;
+    font-size: 0.86rem;
+    line-height: 1.75;
+  }
+
+  .quote-form-section {
+    padding: 54px 0 72px;
+  }
+
+  .quote-step {
+    gap: 34px;
+    padding: 44px 0;
+  }
+
+  .quote-step-heading {
+    gap: 16px;
+  }
+
+  .quote-step-heading h2 {
+    font-size: 1.6rem;
+  }
+
+  .quote-fields {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .quote-field-full {
+    grid-column: auto;
+  }
+
+  .quote-field input,
+  .quote-field select {
+    min-height: 50px;
+    font-size: 0.9rem;
+  }
+
+  .quote-field textarea {
+    font-size: 0.9rem;
+  }
+
+  .quote-submit {
+    min-height: 68px;
+    padding: 0 20px;
+    font-size: 0.72rem;
+  }
+
+  .quote-submit:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .quote-contact {
+    padding: 68px 0;
+  }
+
+  .quote-contact h2 {
+    font-size: clamp(1.8rem, 9vw, 2.8rem);
+  }
+
+  .quote-contact-actions {
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  .quote-contact-actions a {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+}
