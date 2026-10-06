@@ -54,6 +54,7 @@ body {
 
 .admin-summary {
   display: grid;
+  padding: 0;
   grid-template-columns: repeat(5, 1fr);
   gap: 1px;
   margin-top: 36px;
@@ -89,6 +90,7 @@ body {
 
 .admin-requests {
   margin-top: 0;
+  padding: 0;
 }
 
 .admin-section-heading {
