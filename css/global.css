@@ -653,7 +653,7 @@ h4 {
 @media (max-width: 600px) {
 
   .about-title {
-    font-size: clamp(2.8rem, 13vw, 4.2rem);
+    font-size: clamp(2.35rem, 10.2vw, 3.2rem);
   }
 
   .about-stats {
