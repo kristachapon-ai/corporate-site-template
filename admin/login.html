@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Login | NG Training</title>
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <main class="admin-login-page">
+
+    <section class="admin-login-card">
+
+      <div class="admin-login-heading">
+        <p>NG TRAINING</p>
+        <h1>ADMIN LOGIN</h1>
+        <span>
+          เข้าสู่ระบบเพื่อจัดการคำขอใบเสนอราคา
+        </span>
+      </div>
+
+      <form id="admin-login-form">
+
+        <label for="admin-username">
+          Username
+        </label>
+
+        <input
+          id="admin-username"
+          name="username"
+          type="text"
+          autocomplete="username"
+          required
+        >
+
+        <label for="admin-password">
+          Password
+        </label>
+
+        <input
+          id="admin-password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+        <p
+          id="admin-login-message"
+          role="alert"
+        ></p>
+
+        <button type="submit">
+          SIGN IN
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <script src="../js/admin-login.js"></script>
+
+</body>
+</html>
