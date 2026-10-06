@@ -23,7 +23,8 @@
      TYPOGRAPHY
   ========================== */
 
-  --font-primary: Arial, Helvetica, sans-serif;
+ --font-primary: "Prompt", Arial, sans-serif;
+--font-heading: "Montserrat", "Prompt", Arial, sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
