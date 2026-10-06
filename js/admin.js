@@ -6,6 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const tableBody = document.querySelector(
     ".admin-table tbody"
   );
+    const paginationInfo = document.querySelector(
+    "#pagination-info"
+  );
+
+  const paginationPages = document.querySelector(
+    "#pagination-pages"
+  );
+
+  const paginationPrev = document.querySelector(
+    "#pagination-prev"
+  );
+
+  const paginationNext = document.querySelector(
+    "#pagination-next"
+  );
+
+  let currentPage = 1;
 
   if (!tableBody) return;
 
@@ -175,11 +192,61 @@ function formatDateTime(value) {
       .join("");
   }
 
+    function renderPagination(pagination) {
+    if (
+      !paginationInfo ||
+      !paginationPages ||
+      !paginationPrev ||
+      !paginationNext
+    ) {
+      return;
+    }
 
-  async function loadQuoteRequests() {
+    const page = pagination.page || 1;
+    const pageSize = pagination.pageSize || 10;
+    const total = pagination.total || 0;
+    const totalPages = pagination.totalPages || 1;
+
+    const start =
+      total === 0
+        ? 0
+        : (page - 1) * pageSize + 1;
+
+    const end = Math.min(
+      page * pageSize,
+      total
+    );
+
+    paginationInfo.textContent =
+      `Showing ${start}–${end} of ${total} requests`;
+
+    paginationPrev.disabled = page <= 1;
+    paginationNext.disabled = page >= totalPages;
+
+    paginationPages.innerHTML = "";
+
+    for (let i = 1; i <= totalPages; i += 1) {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.textContent = i;
+
+      if (i === page) {
+        button.classList.add("is-active");
+        button.disabled = true;
+      }
+
+      button.addEventListener("click", () => {
+        loadQuoteRequests(i);
+      });
+
+      paginationPages.appendChild(button);
+    }
+  }
+    async function loadQuoteRequests(page = currentPage) {
     try {
       const response = await fetch(
-        "/api/admin/quotes",
+                `/api/admin/quotes?page=${encodeURIComponent(page)}`,
         {
           headers: {
             "Accept": "application/json"
@@ -195,9 +262,10 @@ function formatDateTime(value) {
           "Unable to load quote requests."
         );
       }
-
       updateSummary(result.summary);
-      renderRequests(result.requests);
+      renderRequests(result.requests);   
+      currentPage = result.pagination.page;
+      renderPagination(result.pagination);
     } catch (error) {
       console.error(
         "Admin quote loading error:",
@@ -214,7 +282,19 @@ function formatDateTime(value) {
     }
   }
 
+    if (paginationPrev) {
+    paginationPrev.addEventListener("click", () => {
+      if (currentPage > 1) {
+        loadQuoteRequests(currentPage - 1);
+      }
+    });
+  }
 
+  if (paginationNext) {
+    paginationNext.addEventListener("click", () => {
+      loadQuoteRequests(currentPage + 1);
+    });
+  }
   const logoutButton = document.querySelector(
     "#admin-logout-button"
   );
