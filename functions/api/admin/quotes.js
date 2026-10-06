@@ -24,7 +24,7 @@ export async function onRequestGet(context) {
         status,
         created_at
       FROM quote_requests
-      ORDER BY id DESC
+      ORDER BY created_at DESC
     `).all();
 
     const requests = result.results || [];
