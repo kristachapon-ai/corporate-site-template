@@ -110,7 +110,81 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
+  function formatQuotationAddress(quote) {
+    const parts = [];
 
+    if (quote.quotation_address) {
+      parts.push(
+        String(quote.quotation_address).trim()
+      );
+    }
+
+    if (quote.district) {
+      parts.push(
+        `ต.${String(quote.district).trim()}`
+      );
+    }
+
+    if (quote.area) {
+      parts.push(
+        `อ.${String(quote.area).trim()}`
+      );
+    }
+
+    if (quote.province) {
+      parts.push(
+        `จ.${String(quote.province).trim()}`
+      );
+    }
+
+    if (quote.postal_code) {
+      parts.push(
+        String(quote.postal_code).trim()
+      );
+    }
+
+    return parts.length
+      ? parts.join(" ")
+      : "-";
+  }
+
+  function formatQuotationAddress(quote) {
+    const parts = [];
+
+    if (quote.quotation_address) {
+      parts.push(
+        String(quote.quotation_address).trim()
+      );
+    }
+
+    if (quote.district) {
+      parts.push(
+        `ต.${String(quote.district).trim()}`
+      );
+    }
+
+    if (quote.area) {
+      parts.push(
+        `อ.${String(quote.area).trim()}`
+      );
+    }
+
+    if (quote.province) {
+      parts.push(
+        `จ.${String(quote.province).trim()}`
+      );
+    }
+
+    if (quote.postal_code) {
+      parts.push(
+        String(quote.postal_code).trim()
+      );
+    }
+
+    return parts.length
+      ? parts.join(" ")
+      : "-";
+  }
   function renderQuote(quote) {
     requestNumberElement.textContent =
       quote.request_number || "-";
@@ -225,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </section>
 
 
-      <section class="admin-detail-group">
+           <section class="admin-detail-group">
 
         <div class="admin-detail-group-heading">
           <span>03</span>
@@ -237,6 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
 
         <div class="admin-detail-grid">
+
           ${detailRow(
             "ชื่อนิติบุคคล / หน่วยงาน",
             quote.legal_name
@@ -253,23 +328,17 @@ document.addEventListener("DOMContentLoaded", () => {
           )}
 
           ${detailRow(
-            "แขวง / ตำบล",
-            quote.district
+            "ผู้รับเอกสาร / ฝ่าย",
+            quote.document_contact
           )}
 
-          ${detailRow(
-            "เขต / อำเภอ",
-            quote.area
-          )}
+        </div>
+
+        <div class="admin-detail-wide">
 
           ${detailRow(
-            "จังหวัด",
-            quote.province
-          )}
-
-          ${detailRow(
-            "รหัสไปรษณีย์",
-            quote.postal_code
+            "ที่อยู่สำหรับออกใบเสนอราคา",
+            formatQuotationAddress(quote)
           )}
 
           ${detailRow(
@@ -277,17 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
             quote.quotation_email
           )}
 
-          ${detailRow(
-            "ผู้รับเอกสาร / ฝ่าย",
-            quote.document_contact
-          )}
-        </div>
-
-        <div class="admin-detail-wide">
-          ${detailRow(
-            "ที่อยู่สำหรับออกใบเสนอราคา",
-            quote.quotation_address
-          )}
         </div>
 
       </section>
