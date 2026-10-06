@@ -1,6 +1,8 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
-
+  if (url.pathname === "/admin/login.html") {
+  return context.next();
+}
   const cookieHeader =
     context.request.headers.get("Cookie") || "";
 
