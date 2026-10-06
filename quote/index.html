@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Request a Quote | NG Training</title>
+
+  <meta
+    name="description"
+    content="ส่งรายละเอียดกิจกรรมเพื่อให้ทีม NG Training ออกแบบกิจกรรมและจัดทำใบเสนอราคาสำหรับองค์กรของคุณ"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<body>
+
+  <main class="quote-page">
+
+    <!-- =========================
+         QUOTE HERO
+    ========================== -->
+
+    <section class="quote-hero">
+      <div class="container">
+
+        <a class="quote-back" href="../">
+          ← BACK TO NG TRAINING
+        </a>
+
+        <div class="ng-slash"></div>
+
+        <p class="section-label">
+          REQUEST A QUOTE
+        </p>
+
+        <h1 class="quote-title">
+          TELL US ABOUT<br>
+          <span>YOUR EVENT.</span>
+        </h1>
+
+        <p class="quote-description">
+          ขอบคุณที่สนใจบริการของ NG Training
+          กรุณาแจ้งข้อมูลเบื้องต้นเพื่อให้ทีมงานสามารถ
+          ออกแบบกิจกรรมและจัดทำใบเสนอราคา
+          ให้เหมาะสมกับองค์กรของคุณ
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         QUOTE FORM
+    ========================== -->
+
+    <section class="quote-form-section">
+      <div class="container">
+
+        <form class="quote-form" id="quote-form">
+
+
+          <!-- =====================
+               01 CONTACT PERSON
+          ====================== -->
+
+          <section class="quote-step">
+
+            <div class="quote-step-heading">
+              <span class="quote-step-number">01</span>
+
+              <div>
+                <p>CONTACT PERSON</p>
+                <h2>ข้อมูลผู้ติดต่อ</h2>
+              </div>
+            </div>
+
+
+            <div class="quote-fields">
+
+              <div class="quote-field">
+                <label for="contact-name">
+                  ชื่อ–นามสกุล *
+                </label>
+
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="contactName"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="position">
+                  ตำแหน่ง
+                </label>
+
+                <input
+                  type="text"
+                  id="position"
+                  name="position"
+                >
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="organization">
+                  บริษัท / หน่วยงาน *
+                </label>
+
+                <input
+                  type="text"
+                  id="organization"
+                  name="organization"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="email">
+                  อีเมล *
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="phone">
+                  เบอร์โทรศัพท์ *
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="line-id">
+                  LINE ID
+                </label>
+
+                <input
+                  type="text"
+                  id="line-id"
+                  name="lineId"
+                >
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================
+               02 EVENT BRIEF
+          ====================== -->
+
+          <section class="quote-step">
+
+            <div class="quote-step-heading">
+              <span class="quote-step-number">02</span>
+
+              <div>
+                <p>EVENT BRIEF</p>
+                <h2>รายละเอียดกิจกรรม</h2>
+              </div>
+            </div>
+
+
+            <div class="quote-fields">
+
+              <div class="quote-field quote-field-full">
+                <label for="event-type">
+                  ประเภทกิจกรรม *
+                </label>
+
+                <select
+                  id="event-type"
+                  name="eventType"
+                  required
+                >
+                  <option value="">
+                    เลือกประเภทกิจกรรม
+                  </option>
+
+                  <option value="Team Building">
+                    Team Building
+                  </option>
+
+                  <option value="Training">
+                    Training
+                  </option>
+
+                  <option value="Outing">
+                    Outing
+                  </option>
+
+                  <option value="Staff Party">
+                    Staff Party
+                  </option>
+
+                  <option value="Other">
+                    อื่น ๆ
+                  </option>
+                </select>
+              </div>
+
+
+              <div class="quote-field">
+                <label for="duration">
+                  ระยะเวลา *
+                </label>
+
+                <select
+                  id="duration"
+                  name="duration"
+                  required
+                >
+                  <option value="">
+                    เลือกระยะเวลา
+                  </option>
+
+                  <option value="2 Hours">
+                    2 ชั่วโมง
+                  </option>
+
+                  <option value="Half Day">
+                    ครึ่งวัน
+                  </option>
+
+                  <option value="1 Day">
+                    1 วัน
+                  </option>
+
+                  <option value="More Than 1 Day">
+                    มากกว่า 1 วัน
+                  </option>
+                </select>
+              </div>
+
+
+              <div class="quote-field">
+                <label for="event-date">
+                  วันที่จัดงาน *
+                </label>
+
+                <input
+                  type="date"
+                  id="event-date"
+                  name="eventDate"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="venue">
+                  สถานที่จัดงาน *
+                </label>
+
+                <input
+                  type="text"
+                  id="venue"
+                  name="venue"
+                  placeholder="จังหวัด / โรงแรม / บริษัท / สถานที่"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="participants">
+                  จำนวนผู้เข้าร่วม *
+                </label>
+
+                <input
+                  type="number"
+                  id="participants"
+                  name="participants"
+                  min="1"
+                  placeholder="เช่น 120"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="budget">
+                  งบประมาณโดยประมาณ
+                </label>
+
+                <select
+                  id="budget"
+                  name="budget"
+                >
+                  <option value="">
+                    ยังไม่ได้กำหนดงบประมาณ
+                  </option>
+
+                  <option value="Under 30000">
+                    ต่ำกว่า 30,000 บาท
+                  </option>
+
+                  <option value="30000-50000">
+                    30,000–50,000 บาท
+                  </option>
+
+                  <option value="50000-100000">
+                    50,000–100,000 บาท
+                  </option>
+
+                  <option value="100000+">
+                    มากกว่า 100,000 บาท
+                  </option>
+                </select>
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="objectives">
+                  วัตถุประสงค์หรือหัวข้อที่ต้องการพัฒนา
+                </label>
+
+                <textarea
+                  id="objectives"
+                  name="objectives"
+                  rows="4"
+                  placeholder="เช่น Teamwork, Communication, Leadership, Engagement, Core Values"
+                ></textarea>
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="event-note">
+                  รายละเอียดเพิ่มเติม
+                </label>
+
+                <textarea
+                  id="event-note"
+                  name="eventNote"
+                  rows="4"
+                  placeholder="รายละเอียดหรือความต้องการเพิ่มเติมเกี่ยวกับกิจกรรม"
+                ></textarea>
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================
+               03 QUOTATION INFO
+          ====================== -->
+
+          <section class="quote-step">
+
+            <div class="quote-step-heading">
+              <span class="quote-step-number">03</span>
+
+              <div>
+                <p>QUOTATION INFORMATION</p>
+                <h2>ข้อมูลสำหรับออกใบเสนอราคา</h2>
+              </div>
+            </div>
+
+
+            <div class="quote-fields">
+
+              <div class="quote-field quote-field-full">
+                <label for="legal-name">
+                  ชื่อนิติบุคคล / ชื่อหน่วยงาน *
+                </label>
+
+                <input
+                  type="text"
+                  id="legal-name"
+                  name="legalName"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="tax-id">
+                  เลขประจำตัวผู้เสียภาษี
+                </label>
+
+                <input
+                  type="text"
+                  id="tax-id"
+                  name="taxId"
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="branch">
+                  สำนักงานใหญ่ / สาขา
+                </label>
+
+                <input
+                  type="text"
+                  id="branch"
+                  name="branch"
+                  placeholder="สำนักงานใหญ่ หรือระบุสาขา"
+                >
+              </div>
+
+
+              <div class="quote-field quote-field-full">
+                <label for="quotation-address">
+                  ที่อยู่สำหรับออกใบเสนอราคา *
+                </label>
+
+                <textarea
+                  id="quotation-address"
+                  name="quotationAddress"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+
+              <div class="quote-field">
+                <label for="district">
+                  แขวง / ตำบล
+                </label>
+
+                <input
+                  type="text"
+                  id="district"
+                  name="district"
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="area">
+                  เขต / อำเภอ
+                </label>
+
+                <input
+                  type="text"
+                  id="area"
+                  name="area"
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="province">
+                  จังหวัด
+                </label>
+
+                <input
+                  type="text"
+                  id="province"
+                  name="province"
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="postal-code">
+                  รหัสไปรษณีย์
+                </label>
+
+                <input
+                  type="text"
+                  id="postal-code"
+                  name="postalCode"
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="quotation-email">
+                  อีเมลสำหรับรับใบเสนอราคา *
+                </label>
+
+                <input
+                  type="email"
+                  id="quotation-email"
+                  name="quotationEmail"
+                  required
+                >
+              </div>
+
+
+              <div class="quote-field">
+                <label for="document-contact">
+                  ชื่อผู้รับเอกสาร / ฝ่าย
+                </label>
+
+                <input
+                  type="text"
+                  id="document-contact"
+                  name="documentContact"
+                >
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <!-- =====================
+               04 REVIEW
+          ====================== -->
+
+          <section class="quote-step quote-review">
+
+            <div class="quote-step-heading">
+              <span class="quote-step-number">04</span>
+
+              <div>
+                <p>REVIEW & SUBMIT</p>
+                <h2>ตรวจสอบและส่งคำขอ</h2>
+              </div>
+            </div>
+
+
+            <div class="quote-confirm">
+
+              <label class="quote-checkbox">
+
+                <input
+                  type="checkbox"
+                  id="confirm-information"
+                  required
+                >
+
+                <span>
+                  ข้าพเจ้าตรวจสอบข้อมูลข้างต้นแล้ว
+                  และยืนยันว่าข้อมูลที่ให้ไว้ถูกต้อง
+                </span>
+
+              </label>
+
+
+              <button
+                class="quote-submit"
+                type="submit"
+              >
+                REQUEST A QUOTATION
+                <span>→</span>
+              </button>
+
+
+              <p class="quote-submit-note">
+                ทีม NG Training จะตรวจสอบรายละเอียด
+                และติดต่อกลับเพื่อจัดทำรูปแบบกิจกรรม
+                และใบเสนอราคาที่เหมาะสม
+              </p>
+
+            </div>
+
+          </section>
+
+
+        </form>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         DIRECT CONTACT
+    ========================== -->
+
+    <section class="quote-contact">
+      <div class="container">
+
+        <p>NEED HELP?</p>
+
+        <h2>
+          ต้องการปรึกษาเจ้าหน้าที่โดยตรง?
+        </h2>
+
+        <div class="quote-contact-actions">
+
+          <a
+            href="https://lin.ee/vVU6xKkh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LINE @ngtraining →
+          </a>
+
+          <a href="tel:0629423639">
+            062-942-3639 →
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
