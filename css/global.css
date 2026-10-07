@@ -3230,3 +3230,181 @@ a.contact-channel:hover .contact-channel-arrow {
   }
 
 }
+/* =========================
+   TIKTOK SECTION
+========================= */
+
+.tiktok-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 120px 0;
+
+  background: #171717;
+  color: var(--color-white);
+}
+
+.tiktok-section::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  right: -120px;
+
+  width: 420px;
+  height: 100%;
+
+  background: rgba(255, 78, 30, 0.06);
+  transform: skewX(-14deg);
+
+  pointer-events: none;
+}
+
+.tiktok-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.tiktok-header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 80px;
+
+  align-items: end;
+
+  margin-bottom: 60px;
+}
+
+.tiktok-title {
+  margin: 18px 0 0;
+
+  color: var(--color-white);
+
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5.5vw, 5.8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.tiktok-title span {
+  color: var(--color-accent);
+}
+
+.tiktok-intro {
+  max-width: 560px;
+  padding-bottom: 8px;
+}
+
+.tiktok-intro p {
+  margin: 0 0 22px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.tiktok-profile-link {
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--color-white);
+
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.tiktok-profile-link:hover {
+  color: var(--color-accent);
+  transform: translateX(4px);
+}
+
+
+/* TIKTOK EMBED */
+
+.tiktok-embed-wrap {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 48px;
+
+  background: #202020;
+
+  border-top: 3px solid var(--color-accent);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tiktok-embed-wrap .tiktok-embed {
+  width: 100% !important;
+  max-width: 780px !important;
+  min-width: 288px !important;
+
+  margin: 0 auto !important;
+}
+
+
+/* TIKTOK — TABLET */
+
+@media (max-width: 900px) {
+
+  .tiktok-section {
+    padding: 90px 0;
+  }
+
+  .tiktok-header {
+    grid-template-columns: 1fr;
+    gap: 30px;
+
+    margin-bottom: 45px;
+  }
+
+  .tiktok-title {
+    font-size: clamp(3rem, 9vw, 4.8rem);
+  }
+
+  .tiktok-embed-wrap {
+    padding: 32px;
+  }
+}
+
+
+/* TIKTOK — MOBILE */
+
+@media (max-width: 600px) {
+
+  .tiktok-section {
+    padding: 72px 0;
+  }
+
+  .tiktok-header {
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .tiktok-title {
+    font-size: clamp(2.6rem, 12vw, 3.6rem);
+  }
+
+  .tiktok-intro p {
+    font-size: 0.92rem;
+  }
+
+  .tiktok-embed-wrap {
+    padding: 14px;
+  }
+
+  .tiktok-embed-wrap .tiktok-embed {
+    min-width: 0 !important;
+  }
+}
