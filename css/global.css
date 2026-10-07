@@ -129,7 +129,7 @@ h4 {
 
 .site-header {
   position: absolute;
-  top: 0;
+  top: 14px;
   left: 0;
 
   width: 100%;
@@ -308,7 +308,7 @@ h4 {
 
   color: var(--color-white);
 
-  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  font-size: clamp(3rem, 5.4vw, 5.5rem);
   font-weight: 900;
 
   line-height: 0.94;
