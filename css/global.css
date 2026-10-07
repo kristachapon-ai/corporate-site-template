@@ -310,7 +310,7 @@ h4 {
 
   color: var(--color-white);
 
-  font-size: clamp(3rem, 5vw, 5.1rem);
+  font-size: clamp(3rem, 4.5vw, 4.7rem);
   font-weight: 900;
 
   line-height: 0.94;
