@@ -179,21 +179,53 @@ body {
   }
 
   .admin-header {
-    align-items: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 18px;
   }
 
   .admin-header h1 {
-    font-size: clamp(2.2rem, 12vw, 3.4rem);
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    line-height: 0.95;
+  }
+
+  .admin-header p {
+    margin-bottom: 5px;
+    font-size: 0.62rem;
+  }
+
+  #admin-logout-button {
+    min-width: auto;
+    height: 36px;
+    padding: 0 14px;
+    font-size: 0.58rem;
   }
 
   .admin-summary {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 24px;
   }
 
   .admin-summary article {
-    min-height: 120px;
+    min-height: 96px;
+    padding: 16px;
   }
 
+  .admin-summary article:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .admin-summary strong {
+    font-size: 2rem;
+  }
+
+  .admin-summary span {
+    font-size: 0.6rem;
+  }
+
+  .admin-summary small {
+    font-size: 0.72rem;
+  }
   .admin-section-heading {
     align-items: flex-start;
     flex-direction: column;
