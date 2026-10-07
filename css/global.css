@@ -285,7 +285,7 @@ h4 {
   position: relative;
   z-index: 2;
 
-  transform: translateY(55px);
+  transform: translateY(25px);
 }
 
 .hero .ng-slash {
