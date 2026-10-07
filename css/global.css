@@ -328,7 +328,49 @@ h4 {
 
   font-size: 1.05rem;
 }
+/* HERO ACTION BUTTONS */
 
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  width: min(100%, 760px);
+}
+
+.hero-actions .btn {
+  width: 100%;
+  min-width: 0;
+  min-height: 64px;
+
+  padding: 10px 20px;
+
+  text-align: center;
+}
+
+/* Quote = Primary CTA */
+
+.hero-actions .btn-quote {
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-white);
+}
+
+/* Secondary actions */
+
+.hero-actions .btn-primary,
+.hero-actions .btn-outline {
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: var(--color-white);
+}
+
+.hero-actions .btn-primary:hover,
+.hero-actions .btn-outline:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--color-primary);
+}
 /* HERO — QUOTE CTA */
 
 .btn-quote {
@@ -500,15 +542,16 @@ h4 {
   }
 
   .hero-actions {
-    align-items: stretch;
-    flex-direction: column;
+  grid-template-columns: 1fr;
+  gap: 10px;
 
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  .hero-actions .btn {
-    width: 100%;
-  }
+.hero-actions .btn {
+  width: 100%;
+  min-height: 58px;
+}
 
 }
 
