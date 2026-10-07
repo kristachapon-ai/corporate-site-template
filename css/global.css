@@ -3238,7 +3238,7 @@ a.contact-channel:hover .contact-channel-arrow {
   position: relative;
   overflow: hidden;
 
-  padding: 120px 0;
+  padding: 72px 0;
 
   background: #171717;
   color: var(--color-white);
@@ -3272,7 +3272,7 @@ a.contact-channel:hover .contact-channel-arrow {
 
   align-items: end;
 
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .tiktok-title {
