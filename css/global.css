@@ -3594,3 +3594,55 @@ a.contact-channel:hover .contact-channel-arrow {
     min-width: 0 !important;
   }
 }
+/* =========================
+   TIKTOK LOCAL VIDEOS
+========================= */
+
+.tiktok-video-card {
+  position: relative;
+  overflow: hidden;
+  background: #202020;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 3px solid var(--color-accent);
+}
+
+.tiktok-local-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: #111111;
+}
+
+.tiktok-video-card .tiktok-gallery-info {
+  padding: 20px;
+}
+
+.tiktok-video-card .tiktok-gallery-info a {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.tiktok-video-card .tiktok-gallery-info a:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .tiktok-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tiktok-gallery {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .tiktok-local-video {
+    aspect-ratio: 9 / 16;
+  }
+}
