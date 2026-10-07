@@ -2573,7 +2573,7 @@ body.lightbox-open {
 .team-card-info h3 {
   margin: 0;
 
-  color: var(--color-white);
+  color: var(--color-primary);
 
   font-family: var(--font-heading);
   font-size: 1rem;
@@ -2584,7 +2584,7 @@ body.lightbox-open {
 .team-card-info p {
   margin: 5px 0 0;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(35, 31, 32, 0.58);
 
   font-family: var(--font-heading);
   font-size: 0.55rem;
