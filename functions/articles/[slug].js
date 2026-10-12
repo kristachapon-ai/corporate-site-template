@@ -278,28 +278,35 @@ export async function onRequestGet({ env, params }) {
       border-bottom: 1px solid var(--color-border);
     }
 
-    .author-avatar {
-      width: 56px;
-      height: 56px;
-      flex: 0 0 56px;
-      border-radius: 50%;
-      overflow: hidden;
-      background: var(--color-primary);
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 23px;
-      font-weight: 700;
-      font-family: var(--font-heading);
-    }
+   
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-heading);
+}
 
-    .author-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.author-avatar img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  max-width: 48px;
+  max-height: 48px;
+  flex: 0 0 48px;
+  object-fit: cover;
+  border-radius: 50%;
+}
 
     .author-info {
       display: flex;
