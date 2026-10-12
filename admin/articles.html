@@ -182,16 +182,129 @@
           <span>ACTIONS</span>
         </div>
 
-        <div id="article-list-content" class="article-empty">
-          <h3>ยังไม่มีบทความ</h3>
-          <p>
-            เริ่มสร้างบทความ SEO เพื่อให้ลูกค้าค้นพบ NG Training
-            ผ่าน Google ได้ง่ายขึ้น
-          </p>
-          <p>
-            ระบบบันทึกและเผยแพร่บทความกำลังอยู่ระหว่างการพัฒนา
-          </p>
+        
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById(
+    "article-list-content"
+  );
+
+  if (!container) return;
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function showMessage(title, message) {
+    container.className = "article-empty";
+    container.innerHTML = "";
+
+    const heading = document.createElement("h3");
+    heading.textContent = title;
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = message;
+
+    container.append(heading, paragraph);
+  }
+
+  try {
+    const response = await fetch(
+      "/api/admin/articles/",
+      {
+        credentials: "same-origin",
+        headers: {
+          Accept: "application/json"
+        }
+      }
+    );
+
+    if (response.status === 401) {
+      window.location.href = "/admin-login.html";
+      return;
+    }
+
+    if (!response.ok) {
+      throw new Error("Unable to load articles.");
+    }
+
+    const result = await response.json();
+
+    if (!result.success) {
+      throw new Error(
+        result.error || "Unable to load articles."
+      );
+    }
+
+    const articles = result.articles;
+
+    if (!Array.isArray(articles)) {
+      throw new Error("Invalid article list response.");
+    }
+
+    if (articles.length === 0) {
+      showMessage(
+        "ยังไม่มีบทความ",
+        "กดเพิ่มบทความใหม่เพื่อเริ่มสร้างเนื้อหา SEO"
+      );
+      return;
+    }
+
+    container.className = "article-list-content";
+    container.innerHTML = articles.map((article) => {
+      const status = article.status === "published"
+        ? "Published"
+        : "Draft";
+
+      return `
+        <div style="
+          display:grid;
+          grid-template-columns:minmax(0,1fr) 130px 110px;
+          gap:20px;
+          padding:20px 24px;
+          border-bottom:1px solid #e5e5e5;
+          align-items:center;
+        ">
+          <div style="min-width:0;">
+            <strong style="overflow-wrap:anywhere;">
+              ${escapeHTML(article.title)}
+            </strong>
+            <div style="
+              font-size:12px;
+              color:#777;
+              overflow-wrap:anywhere;
+            ">
+              ${escapeHTML(article.slug)}
+            </div>
+          </div>
+
+          <div>
+            ${status}
+          </div>
+
+          <div>
+            <span style="color:#777;font-size:12px;">
+              ${escapeHTML(article.id)}
+            </span>
+          </div>
         </div>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Article list error:", error);
+
+    showMessage(
+      "ไม่สามารถโหลดบทความได้",
+      "กรุณาตรวจสอบการเชื่อมต่อ API"
+    );
+  }
+});
+
 
       </div>
 
