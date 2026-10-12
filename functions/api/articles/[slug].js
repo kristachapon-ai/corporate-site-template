@@ -33,6 +33,7 @@ export async function onRequestGet({ env, params }) {
       }, 503);
     }
 
+   <CodeBlock language="javascript" editable>
     const article = await env.DB.prepare(`
       SELECT
         id,
@@ -50,10 +51,6 @@ export async function onRequestGet({ env, params }) {
         author_avatar_url,
         published_at,
         updated_at
-        author_name,
-        author_position,
-        author_avatar_url,
-
       FROM articles
       WHERE slug = ?
         AND status = 'published'
@@ -61,6 +58,7 @@ export async function onRequestGet({ env, params }) {
     `)
       .bind(slug)
       .first();
+</CodeBlock>
 
     if (!article) {
       return json({
