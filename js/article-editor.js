@@ -377,6 +377,60 @@ showMessage("กำลังบันทึกข้อมูลบทควา�
       }
     }
   }
+  
+  const avatarInput = field("article-author-avatar");
+  const avatarPreview = field("article-author-avatar-preview");
+
+  let avatarPreviewUrl = null;
+
+  if (avatarInput && avatarPreview) {
+    avatarInput.addEventListener("change", () => {
+      if (avatarPreviewUrl) {
+        URL.revokeObjectURL(avatarPreviewUrl);
+        avatarPreviewUrl = null;
+      }
+
+      const file = avatarInput.files?.[0];
+
+      if (!file) {
+        if (currentAuthorAvatarUrl) {
+          avatarPreview.src = currentAuthorAvatarUrl;
+          avatarPreview.hidden = false;
+        } else {
+          avatarPreview.removeAttribute("src");
+          avatarPreview.hidden = true;
+        }
+        return;
+      }
+
+      const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ];
+
+      if (
+        !allowedTypes.includes(file.type) ||
+        file.size === 0 ||
+        file.size > 5 * 1024 * 1024
+      ) {
+        avatarInput.value = "";
+        alert("กรุณาเลือกรูป JPG, PNG หรือ WebP ขนาดไม่เกิน 5 MB");
+        return;
+      }
+
+      avatarPreviewUrl = URL.createObjectURL(file);
+      avatarPreview.src = avatarPreviewUrl;
+      avatarPreview.hidden = false;
+    });
+  }
+
+  window.addEventListener("pagehide", () => {
+    if (avatarPreviewUrl) {
+      URL.revokeObjectURL(avatarPreviewUrl);
+    }
+  });
+
 
   saveButton.addEventListener("click", () => {
     saveArticle("draft");
