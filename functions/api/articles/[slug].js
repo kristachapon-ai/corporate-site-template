@@ -50,6 +50,9 @@ export async function onRequestGet({ env, params }) {
         author_avatar_url,
         published_at,
         updated_at
+        author_name,
+        author_position,
+        author_avatar_url,
 
       FROM articles
       WHERE slug = ?
