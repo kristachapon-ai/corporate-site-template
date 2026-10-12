@@ -266,8 +266,6 @@ export async function onRequestGet({ env, params }) {
       font-size: 13px;
     }
 
-    .cover {
-      
     .article-author {
       display: flex;
       align-items: center;
