@@ -11,20 +11,43 @@
   <meta name="description"
         content="บทความ Team Building การพัฒนาบุคลากร และจิตวิทยาองค์กรจาก NG Training">
 
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="/css/variables.css">
+
   <style>
     * {
       box-sizing: border-box;
     }
 
+    
     body {
       margin: 0;
-      background: #f5f5f3;
-      color: #242122;
-      font-family: Arial, sans-serif;
+      background: var(--color-background-soft);
+      color: var(--color-text);
+      font-family: var(--font-primary);
+      -webkit-font-smoothing: antialiased;
     }
 
+    h1,
+    h2,
+    h3,
+    .brand,
+    .eyebrow,
+    .article-category {
+      font-family: var(--font-heading);
+    }
+
+
     .header {
-      background: #242122;
+      background: var(--color-primary);
       padding: 22px 6%;
       display: flex;
       justify-content: space-between;
@@ -143,7 +166,7 @@
     }
 
     footer {
-      background: #242122;
+      background: var(--color-primary);
       color: #aaa;
       padding: 30px 6%;
       text-align: center;
