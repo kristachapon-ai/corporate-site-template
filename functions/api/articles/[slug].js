@@ -45,8 +45,12 @@ export async function onRequestGet({ env, params }) {
         seo_title,
         meta_description,
         focus_keyword,
+        author_name,
+        author_position,
+        author_avatar_url,
         published_at,
         updated_at
+
       FROM articles
       WHERE slug = ?
         AND status = 'published'
