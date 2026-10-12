@@ -309,12 +309,62 @@
             </div>
           </div>
         </section>
+        
+        <section class="editor-panel">
+          <div class="editor-panel-heading">
+            <h2>04 — ข้อมูลผู้เขียน</h2>
+          </div>
+
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="article-author-name">ชื่อผู้เขียน</label>
+              <input
+                id="article-author-name"
+                type="text"
+                maxlength="150"
+                placeholder="Admin"
+              >
+              <small class="editor-help">
+                หากไม่กรอก จะแสดงชื่อ Admin
+              </small>
+            </div>
+
+            <div class="editor-field">
+              <label for="article-author-position">ตำแหน่งผู้เขียน</label>
+              <input
+                id="article-author-position"
+                type="text"
+                maxlength="200"
+                placeholder="เช่น Training Consultant"
+              >
+            </div>
+
+            <div class="editor-field">
+              <label for="article-author-avatar">รูปโปรไฟล์ผู้เขียน</label>
+              <input
+                id="article-author-avatar"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+              >
+              <small class="editor-help">
+                แนะนำรูปสี่เหลี่ยมจัตุรัส หากไม่อัปโหลดจะใช้ Avatar เริ่มต้น
+              </small>
+              <img
+                id="article-author-avatar-preview"
+                class="editor-preview"
+                alt="ตัวอย่างรูปผู้เขียน"
+                hidden
+              >
+            </div>
+          </div>
+        </section>
+
       </div>
 
       <aside>
         <section class="editor-panel">
           <div class="editor-panel-heading">
-            <h2>04 — การเผยแพร่</h2>
+            <h2>05 — การเผยแพร่</h2>
           </div>
 
           <div class="editor-panel-body">
