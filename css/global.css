@@ -497,7 +497,7 @@ h4 {
   }
 
   .hero {
-    min-height: 100svh;
+   min-height: 100vh;
 
     padding-top: 130px;
 
