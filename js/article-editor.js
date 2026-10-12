@@ -150,15 +150,27 @@ document.addEventListener("DOMContentLoaded", async () => {
       return;
     }
 
-    const selectedCover = field("article-cover")?.files?.[0];
+    
+const selectedCover = field("article-cover")?.files?.[0];
 
-    if (selectedCover) {
-      showMessage(
-        "ยังไม่รองรับการอัปโหลดภาพ กรุณานำภาพออกก่อนบันทึก",
-        true
-      );
-      return;
-    }
+if (selectedCover) {
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(selectedCover.type)) {
+    showMessage("รองรับเฉพาะ JPG, PNG และ WebP", true);
+    return;
+  }
+
+  if (selectedCover.size > 5 * 1024 * 1024) {
+    showMessage("รูปภาพต้องมีขนาดไม่เกิน 5 MB", true);
+    return;
+  }
+}
+
 
     if (!isEditMode && savedArticleId !== null) {
       showMessage(
@@ -173,6 +185,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     showMessage("กำลังบันทึกบทความ...");
 
     try {
+      
+if (selectedCover) {
+  showMessage("กำลังอัปโหลดภาพบทความ...");
+
+  const formData = new FormData();
+  formData.append("file", selectedCover);
+
+  const uploadResponse = await fetch(
+    "/api/admin/articles/upload",
+    {
+      method: "POST",
+      credentials: "same-origin",
+      body: formData
+    }
+  );
+
+  if (uploadResponse.status === 401) {
+    throw new Error(
+      "Session หมดอายุ กรุณาเข้าสู่ระบบใหม่"
+    );
+  }
+
+  const uploadResult = await uploadResponse.json();
+
+  if (!uploadResponse.ok || !uploadResult.success) {
+    throw new Error(
+      uploadResult.error || "อัปโหลดภาพไม่สำเร็จ"
+    );
+  }
+
+  if (
+    typeof uploadResult.url !== "string" ||
+    !uploadResult.url.startsWith("/api/articles/image/")
+  ) {
+    throw new Error("API ส่ง URL ภาพไม่ถูกต้อง");
+  }
+
+  currentCoverUrl = uploadResult.url;
+  article.cover_image_url = currentCoverUrl;
+
+  const preview = field("article-cover-preview");
+
+  if (preview) {
+    preview.src = currentCoverUrl;
+  }
+}
+
+showMessage("กำลังบันทึกข้อมูลบทความ...");
+
       const url = isEditMode
         ? `/api/admin/articles/${articleId}`
         : "/api/admin/articles/";
