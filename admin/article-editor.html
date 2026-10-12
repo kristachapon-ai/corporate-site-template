@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Editor | NG Training Admin</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+
+  <style>
+    .editor-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 24px;
+      margin-top: 32px;
+      align-items: start;
+    }
+
+    .editor-panel {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      margin-bottom: 20px;
+    }
+
+    .editor-panel-heading {
+      padding: 18px 22px;
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .editor-panel-heading h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .editor-panel-body {
+      padding: 24px;
+    }
+
+    .editor-field {
+      margin-bottom: 22px;
+    }
+
+    .editor-field:last-child {
+      margin-bottom: 0;
+    }
+
+    .editor-field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .editor-field input,
+    .editor-field textarea,
+    .editor-field select {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 0;
+      background: #fafafa;
+      color: var(--color-text);
+      font: inherit;
+      font-size: 0.9rem;
+    }
+
+    .editor-field textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+
+    .editor-field textarea.article-content {
+      min-height: 420px;
+    }
+
+    .editor-field input:focus,
+    .editor-field textarea:focus,
+    .editor-field select:focus {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 1px;
+      background: #fff;
+    }
+
+    .editor-help {
+      display: block;
+      margin-top: 7px;
+      color: var(--color-text-muted);
+      font-size: 0.72rem;
+      line-height: 1.6;
+    }
+
+    .editor-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .editor-button {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 16px;
+      border: 0;
+      background: var(--color-accent);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .editor-button.secondary {
+      background: var(--color-primary);
+    }
+
+    .editor-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .editor-preview {
+      max-width: 100%;
+      max-height: 220px;
+      margin-top: 12px;
+      object-fit: contain;
+      border: 1px solid var(--color-border);
+    }
+
+    .editor-notice {
+      padding: 14px;
+      background: #fff4e9;
+      border-left: 4px solid var(--color-accent);
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    .editor-back {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--color-text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    @media (max-width: 850px) {
+      .editor-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .editor-panel-body {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="admin-page">
+
+    <header class="admin-header">
+      <div>
+        <p>NG TRAINING</p>
+        <h1>ARTICLE EDITOR</h1>
+      </div>
+      <a href="/admin/articles.html" class="admin-badge">
+        ARTICLES
+      </a>
+    </header>
+
+    <div class="editor-layout">
+
+      <div>
+        <section class="editor-panel">
+          <div class="editor-panel-heading">
+            <h2>01 — ข้อมูลบทความ</h2>
+          </div>
+
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="article-title">ชื่อบทความ (H1)</label>
+              <input
+                id="article-title"
+                type="text"
+                maxlength="200"
+                placeholder="เช่น รับจัด Team Building บริษัท โดยทีมงานมืออาชีพ"
+              >
+            </div>
+
+            <div class="editor-field">
+              <label for="article-excerpt">คำอธิบายสั้น</label>
+              <textarea
+                id="article-excerpt"
+                rows="3"
+                placeholder="สรุปเนื้อหาบทความสำหรับหน้าแสดงรายการ"
+              ></textarea>
+            </div>
+
+            <div class="editor-field">
+              <label for="article-content">เนื้อหาบทความ</label>
+              <textarea
+                id="article-content"
+                class="article-content"
+                placeholder="เขียนเนื้อหาบทความที่นี่..."
+              ></textarea>
+              <small class="editor-help">
+                ในขั้นตอนต่อไปเราจะเพิ่มเครื่องมือจัดรูปแบบหัวข้อ H2, H3 รูปภาพ และลิงก์
+              </small>
+            </div>
+          </div>
+        </section>
+
+        <section class="editor-panel">
+          <div class="editor-panel-heading">
+            <h2>02 — รูปภาพประกอบ</h2>
+          </div>
+
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="article-cover">ภาพปกบทความ</label>
+              <input
+                id="article-cover"
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+              >
+              <small class="editor-help">
+                แนะนำภาพแนวนอน 1200 × 630 px
+              </small>
+              <img
+                id="cover-preview"
+                class="editor-preview"
+                alt="ตัวอย่างภาพปก"
+                hidden
+              >
+            </div>
+
+            <div class="editor-field">
+              <label for="article-cover-alt">คำอธิบายภาพ (Alt Text)</label>
+              <input
+                id="article-cover-alt"
+                type="text"
+                placeholder="เช่น กิจกรรม Team Building ของพนักงานบริษัท"
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="editor-panel">
+          <div class="editor-panel-heading">
+            <h2>03 — ตั้งค่า SEO</h2>
+          </div>
+
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="article-slug">URL Slug</label>
+              <input
+                id="article-slug"
+                type="text"
+                placeholder="team-building-company"
+                pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+              >
+              <small class="editor-help">
+                ตัวอย่าง: /articles/team-building-company
+              </small>
+            </div>
+
+            <div class="editor-field">
+              <label for="article-seo-title">SEO Title</label>
+              <input
+                id="article-seo-title"
+                type="text"
+                maxlength="70"
+                placeholder="รับจัด Team Building บริษัท | NG Training"
+              >
+            </div>
+
+            <div class="editor-field">
+              <label for="article-meta-description">Meta Description</label>
+              <textarea
+                id="article-meta-description"
+                maxlength="160"
+                rows="3"
+                placeholder="คำอธิบายบทความสำหรับผลการค้นหา Google"
+              ></textarea>
+            </div>
+
+            <div class="editor-field">
+              <label for="article-keyword">คีย์เวิร์ดหลัก</label>
+              <input
+                id="article-keyword"
+                type="text"
+                placeholder="รับจัด Team Building"
+              >
+              <small class="editor-help">
+                ใช้สำหรับวางแผนเนื้อหา ไม่ใช่การรับประกันอันดับ Google
+              </small>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="editor-panel">
+          <div class="editor-panel-heading">
+            <h2>04 — การเผยแพร่</h2>
+          </div>
+
+          <div class="editor-panel-body">
+            <div class="editor-field">
+              <label for="article-status">สถานะบทความ</label>
+              <select id="article-status">
+                <option value="draft">Draft — ฉบับร่าง</option>
+                <option value="published">Published — เผยแพร่</option>
+              </select>
+            </div>
+
+            <div class="editor-actions">
+              <button
+                type="button"
+                class="editor-button secondary"
+                disabled
+              >
+                SAVE DRAFT
+              </button>
+
+              <button
+                type="button"
+                class="editor-button"
+                disabled
+              >
+                PUBLISH ARTICLE
+              </button>
+            </div>
+
+            <p class="editor-notice">
+              ระบบบันทึกและเผยแพร่จะเปิดใช้งานหลังเชื่อมต่อ Cloudflare D1 และ API เรียบร้อยแล้ว
+            </p>
+          </div>
+        </section>
+
+        <a href="/admin/articles.html" class="editor-back">
+          ← กลับรายการบทความ
+        </a>
+      </aside>
+
+    </div>
+  </main>
+
+  <script>
+    const coverInput = document.getElementById("article-cover");
+    const coverPreview = document.getElementById("cover-preview");
+
+    let previewUrl = null;
+
+    coverInput.addEventListener("change", () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+        previewUrl = null;
+      }
+
+      const file = coverInput.files[0];
+
+      if (!file) {
+        coverPreview.hidden = true;
+        coverPreview.removeAttribute("src");
+        return;
+      }
+
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+        coverInput.value = "";
+        coverPreview.hidden = true;
+        coverPreview.removeAttribute("src");
+        alert("กรุณาเลือกไฟล์ JPG, PNG หรือ WebP");
+        return;
+      }
+
+      previewUrl = URL.createObjectURL(file);
+      coverPreview.src = previewUrl;
+      coverPreview.hidden = false;
+    });
+
+    window.addEventListener("pagehide", () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    });
+  </script>
+</body>
+</html>
