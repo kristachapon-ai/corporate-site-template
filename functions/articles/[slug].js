@@ -103,8 +103,12 @@ export async function onRequestGet({ env, params }) {
       : ""
   );
   const canonical = `${SITE_URL}/articles/${encodeURIComponent(slug)}`;
-  const publishedDate = article.published_at
+    const publishedDate = article.published_at
     ? String(article.published_at).slice(0, 10)
+    : "";
+
+  const publishedDateTime = article.published_at
+    ? String(article.published_at).replace(" ", "T") + "Z"
     : "";
 
   const html = `<!DOCTYPE html>
@@ -133,7 +137,7 @@ export async function onRequestGet({ env, params }) {
       "@id": canonical
     },
     ...(safeCover ? { image: [safeCover] } : {}),
-    ...(publishedDate ? { datePublished: publishedDate } : {}),
+    ...(publishedDateTime ? { datePublished: publishedDateTime } : {}),
     author: {
       "@type": "Organization",
       name: "NG Training",
