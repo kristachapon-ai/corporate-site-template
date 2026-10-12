@@ -55,6 +55,11 @@ function renderContent(content) {
     } else if (/^---+$/.test(text)) {
       closeList();
       html.push("<hr>");
+      } else if (/^>\s+/.test(text)) {
+  closeList();
+  html.push(
+    `<blockquote class="article-quote">${renderInline(text.replace(/^>\s+/, ""))}</blockquote>`
+  );
     } else {
       closeList();
       html.push(`<p>${renderInline(text)}</p>`);
@@ -415,7 +420,30 @@ export async function onRequestGet({ env, params }) {
       border-top: 1px solid var(--color-border);
       margin: 35px 0;
     }
+    .content .article-quote {
+  position: relative;
+  margin: 30px 0;
+  padding: 26px 30px 26px 34px;
+  background: #fff7f2;
+  border-left: 5px solid #f4511e;
+  border-radius: 0 10px 10px 0;
+  color: #292929;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 600;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
 
+.content .article-quote::before {
+  content: "“";
+  display: block;
+  color: #f4511e;
+  font-family: Georgia, serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 0.8;
+  margin-bottom: 12px;
+}
     .cta {
       margin-top: 55px;
       background: var(--color-primary);
