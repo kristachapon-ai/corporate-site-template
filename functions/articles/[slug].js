@@ -10,7 +10,12 @@ function escapeHtml(value) {
     "'": "&#39;"
   })[char]);
 }
-
+function renderInline(text) {
+  return escapeHtml(text).replace(
+    /\*\*(.+?)\*\*/g,
+    "<strong>$1</strong>"
+  );
+}
 function renderContent(content) {
   const lines = String(content || "").split(/\r?\n/);
   const html = [];
@@ -52,7 +57,7 @@ function renderContent(content) {
       html.push("<hr>");
     } else {
       closeList();
-      html.push(`<p>${escapeHtml(text)}</p>`);
+      html.push(`<p>${renderInline(text)}</p>`);
     }
   }
 
