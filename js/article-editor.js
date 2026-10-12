@@ -268,10 +268,10 @@ showMessage("กำลังบันทึกข้อมูลบทควา�
       setValue("article-status", status);
 
       showMessage(
-        status === "published"
-          ? "บันทึกสถานะ Published สำเร็จ (ยังไม่มีหน้าเว็บบทความสาธารณะ)"
-          : "บันทึกฉบับร่างสำเร็จ"
-      );
+  status === "published"
+    ? "เผยแพร่บทความสำเร็จ สามารถเปิดอ่านบนเว็บไซต์ได้แล้ว"
+    : "บันทึกฉบับร่างสำเร็จ"
+);
 
       if (!isEditMode) {
         saveButton.textContent = "SAVED";
