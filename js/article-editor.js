@@ -52,7 +52,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       seo_title: getValue("article-seo-title"),
       meta_description: getValue("article-meta-description"),
       focus_keyword: getValue("article-keyword"),
+      author_name: getValue("article-author-name") || "Admin",
+      author_position: getValue("article-author-position"),
+      author_avatar_url: "",
       status
+
     };
   }
 
