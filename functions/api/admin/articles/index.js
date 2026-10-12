@@ -50,6 +50,7 @@ function validateArticle(body) {
   return null;
 }
 
+
 function articleValues(body) {
   return {
     title: clean(body.title, 200),
@@ -61,9 +62,13 @@ function articleValues(body) {
     seo_title: clean(body.seo_title, 70),
     meta_description: clean(body.meta_description, 160),
     focus_keyword: clean(body.focus_keyword, 200),
+    author_name: clean(body.author_name, 150) || "Admin",
+    author_position: clean(body.author_position, 200),
+    author_avatar_url: clean(body.author_avatar_url, 1000),
     status: clean(body.status, 20)
   };
 }
+
 
 export async function onRequestGet({ request, env }) {
   try {
