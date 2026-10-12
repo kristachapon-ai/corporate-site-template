@@ -153,6 +153,19 @@
       text-decoration: none;
     }
 
+
+    /* Article formatting toolbar */
+    .article-toolbar { display:flex; flex-wrap:wrap; gap:7px; padding:12px; background:#f5f5f5; border:1px solid var(--color-border); border-bottom:0; align-items:center; }
+    .article-toolbar button, .article-toolbar select { width:auto; min-height:36px; padding:7px 11px; background:#fff; border:1px solid #d8d8d8; border-radius:5px; color:#252525; font:inherit; font-size:13px; cursor:pointer; }
+    .article-toolbar button:hover, .article-toolbar select:hover { border-color:var(--color-accent); }
+    .article-toolbar button:focus-visible, .article-toolbar select:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+    .article-toolbar .tool-separator { width:1px; height:26px; background:#d3d3d3; margin:0 3px; }
+    .article-toolbar .tool-accent { border-left:4px solid #f4511e; }
+    .article-toolbar .tool-bold { font-weight:800; }
+    .article-toolbar .tool-italic { font-style:italic; }
+    .article-toolbar select { max-width:155px; }
+    .article-toolbar-help { margin:8px 0; color:#666; font-size:12px; }
+
     @media (max-width: 850px) {
       .editor-layout {
         grid-template-columns: 1fr;
@@ -210,13 +223,39 @@
 
             <div class="editor-field">
               <label for="article-content">เนื้อหาบทความ</label>
+              <div class="article-toolbar" role="toolbar" aria-label="เครื่องมือจัดรูปแบบบทความ">
+                <button type="button" data-format="bold" class="tool-bold" title="ตัวหนา">B</button>
+                <button type="button" data-format="italic" class="tool-italic" title="ตัวเอียง">I</button>
+                <span class="tool-separator" aria-hidden="true"></span>
+                <button type="button" data-format="h2">H2</button>
+                <button type="button" data-format="h3">H3</button>
+                <button type="button" data-format="quote" class="tool-accent">❝ คำคม</button>
+                <button type="button" data-format="highlight" class="tool-accent">เน้นข้อความ</button>
+                <span class="tool-separator" aria-hidden="true"></span>
+                <select id="article-text-color" aria-label="สีตัวอักษร">
+                  <option value="">สีข้อความ</option>
+                  <option value="orange">🟠 ส้ม NG</option>
+                  <option value="black">⚫ ดำ</option>
+                  <option value="blue">🔵 น้ำเงิน</option>
+                  <option value="green">🟢 เขียว</option>
+                  <option value="purple">🟣 ม่วง</option>
+                </select>
+                <select id="article-text-size" aria-label="ขนาดตัวอักษร">
+                  <option value="">ขนาดข้อความ</option>
+                  <option value="small">เล็ก</option>
+                  <option value="normal">ปกติ</option>
+                  <option value="large">ใหญ่</option>
+                </select>
+                <button type="button" data-format="list">• รายการ</button>
+                <button type="button" data-format="rule">— เส้นคั่น</button>
+              </div>
               <textarea
                 id="article-content"
                 class="article-content"
                 placeholder="เขียนเนื้อหาบทความที่นี่..."
               ></textarea>
               <small class="editor-help">
-                ในขั้นตอนต่อไปเราจะเพิ่มเครื่องมือจัดรูปแบบหัวข้อ H2, H3 รูปภาพ และลิงก์
+                เลือกข้อความแล้วกดเครื่องมือด้านบน หรือวางเคอร์เซอร์ที่บรรทัดเพื่อเพิ่มหัวข้อและคำคม
               </small>
             </div>
           </div>
@@ -455,6 +494,80 @@
         URL.revokeObjectURL(previewUrl);
       }
     });
+  </script>
+
+  <script>
+    (() => {
+      const field = document.getElementById("article-content");
+      const toolbar = document.querySelector(".article-toolbar");
+      const colorSelect = document.getElementById("article-text-color");
+      const sizeSelect = document.getElementById("article-text-size");
+      if (!field || !toolbar) return;
+
+      // Preserve the text selection when a toolbar control takes focus.
+      let savedStart = 0;
+      let savedEnd = 0;
+      function rememberSelection() {
+        savedStart = field.selectionStart;
+        savedEnd = field.selectionEnd;
+      }
+      field.addEventListener("select", rememberSelection);
+      field.addEventListener("keyup", rememberSelection);
+      field.addEventListener("mouseup", rememberSelection);
+      toolbar.addEventListener("mousedown", (event) => {
+        if (event.target.closest("button[data-format]")) event.preventDefault();
+      });
+
+      function applyEdit(start, end, replacement, selectStart, selectEnd) {
+        field.focus();
+        field.setRangeText(replacement, start, end, "start");
+        field.setSelectionRange(selectStart, selectEnd);
+        rememberSelection();
+        field.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+      function wrap(before, after, placeholder) {
+        const start = savedStart, end = savedEnd;
+        const selected = field.value.slice(start, end) || placeholder;
+        const replacement = before + selected + after;
+        applyEdit(start, end, replacement, start + before.length, start + before.length + selected.length);
+      }
+      function prefixLines(prefix, placeholder) {
+        const start = savedStart, end = savedEnd;
+        const lineStart = field.value.lastIndexOf("\n", Math.max(0, start - 1)) + 1;
+        let lineEnd = field.value.indexOf("\n", end);
+        if (lineEnd < 0) lineEnd = field.value.length;
+        const original = field.value.slice(lineStart, lineEnd) || placeholder;
+        const result = original.split("\n").map(line => prefix + line.replace(/^(?:#{2,3}|>|[-*])\s+/, "")).join("\n");
+        applyEdit(lineStart, lineEnd, result, lineStart, lineStart + result.length);
+      }
+      toolbar.addEventListener("click", (event) => {
+        const button = event.target.closest("button[data-format]");
+        if (!button) return;
+        switch (button.dataset.format) {
+          case "bold": wrap("**", "**", "ข้อความตัวหนา"); break;
+          case "italic": wrap("*", "*", "ข้อความตัวเอียง"); break;
+          case "h2": prefixLines("## ", "หัวข้อหลัก"); break;
+          case "h3": prefixLines("### ", "หัวข้อย่อย"); break;
+          case "quote": prefixLines("> ", "ข้อความคำคม"); break;
+          case "list": prefixLines("- ", "รายการ"); break;
+          case "highlight": wrap("{{highlight|", "}}", "ข้อความสำคัญ"); break;
+          case "rule": {
+            const start = savedStart;
+            const insertion = (start && field.value[start - 1] !== "\n" ? "\n" : "") + "---\n";
+            applyEdit(start, start, insertion, start + insertion.length, start + insertion.length);
+            break;
+          }
+        }
+      });
+      colorSelect.addEventListener("change", () => {
+        if (colorSelect.value) wrap("{{color:" + colorSelect.value + "|", "}}", "ข้อความสี");
+        colorSelect.value = "";
+      });
+      sizeSelect.addEventListener("change", () => {
+        if (sizeSelect.value) wrap("{{size:" + sizeSelect.value + "|", "}}", "ข้อความ");
+        sizeSelect.value = "";
+      });
+    })();
   </script>
     <script src="../js/article-editor.js"></script>
 </body>
