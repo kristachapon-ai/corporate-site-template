@@ -195,6 +195,7 @@ export async function onRequestPost({ request, env }) {
       }, 409);
     }
 
+    
     const result = await env.DB.prepare(`
       INSERT INTO articles (
         title,
@@ -206,10 +207,13 @@ export async function onRequestPost({ request, env }) {
         seo_title,
         meta_description,
         focus_keyword,
+        author_name,
+        author_position,
+        author_avatar_url,
         status,
         published_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
         CASE WHEN ? = 'published'
           THEN CURRENT_TIMESTAMP
           ELSE NULL
@@ -226,10 +230,14 @@ export async function onRequestPost({ request, env }) {
         article.seo_title,
         article.meta_description,
         article.focus_keyword,
+        article.author_name,
+        article.author_position,
+        article.author_avatar_url,
         article.status,
         article.status
       )
       .run();
+
 
     return json({
       success: true,
