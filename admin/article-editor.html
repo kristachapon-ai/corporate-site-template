@@ -326,23 +326,32 @@
               </select>
             </div>
 
-            <div class="editor-actions">
-              <button
-                type="button"
-                class="editor-button secondary"
-                disabled
-              >
-                SAVE DRAFT
-              </button>
+        
+<p
+  id="article-save-message"
+  role="status"
+  aria-live="polite"
+  hidden
+></p>
 
-              <button
-                type="button"
-                class="editor-button"
-                disabled
-              >
-                PUBLISH ARTICLE
-              </button>
-            </div>
+<div class="editor-actions">
+  <button
+    type="button"
+    id="save-draft-button"
+    class="editor-button secondary"
+  >
+    SAVE DRAFT
+  </button>
+
+  <button
+    type="button"
+    id="publish-article-button"
+    class="editor-button"
+  >
+    PUBLISH ARTICLE
+  </button>
+</div>
+
 
             <p class="editor-notice">
               ระบบบันทึกและเผยแพร่จะเปิดใช้งานหลังเชื่อมต่อ Cloudflare D1 และ API เรียบร้อยแล้ว
@@ -397,5 +406,6 @@
       }
     });
   </script>
+    <script src="../js/article-editor.js"></script>
 </body>
 </html>
