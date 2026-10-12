@@ -257,6 +257,69 @@ if (selectedCover) {
   }
 }
 
+      const selectedAvatar = field("article-author-avatar")?.files?.[0];
+
+      if (selectedAvatar) {
+        const allowedTypes = [
+          "image/jpeg",
+          "image/png",
+          "image/webp"
+        ];
+
+        if (!allowedTypes.includes(selectedAvatar.type)) {
+          throw new Error("รูปผู้เขียนต้องเป็น JPG, PNG หรือ WebP");
+        }
+
+        if (
+          selectedAvatar.size === 0 ||
+          selectedAvatar.size > 5 * 1024 * 1024
+        ) {
+          throw new Error("รูปผู้เขียนต้องมีขนาดไม่เกิน 5 MB");
+        }
+
+        showMessage("กำลังอัปโหลดรูปโปรไฟล์ผู้เขียน...");
+
+        const avatarFormData = new FormData();
+        avatarFormData.append("file", selectedAvatar);
+
+        const avatarResponse = await fetch(
+          "/api/admin/articles/upload",
+          {
+            method: "POST",
+            credentials: "same-origin",
+            body: avatarFormData
+          }
+        );
+
+        if (avatarResponse.status === 401) {
+          throw new Error("Session หมดอายุ กรุณาเข้าสู่ระบบใหม่");
+        }
+
+        const avatarResult = await avatarResponse.json();
+
+        if (
+          !avatarResponse.ok ||
+          !avatarResult.success ||
+          typeof avatarResult.url !== "string" ||
+          !avatarResult.url.startsWith("/api/articles/image/")
+        ) {
+          throw new Error(
+            avatarResult.error || "อัปโหลดรูปผู้เขียนไม่สำเร็จ"
+          );
+        }
+
+        currentAuthorAvatarUrl = avatarResult.url;
+        article.author_avatar_url = currentAuthorAvatarUrl;
+
+        const avatarPreview = field("article-author-avatar-preview");
+
+        if (avatarPreview) {
+          avatarPreview.src = currentAuthorAvatarUrl;
+          avatarPreview.hidden = false;
+        }
+      }
+
+
 showMessage("กำลังบันทึกข้อมูลบทความ...");
 
       const url = isEditMode
