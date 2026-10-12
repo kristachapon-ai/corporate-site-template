@@ -94,6 +94,30 @@ export async function onRequestGet({ env, params }) {
   if (!article) {
     return new Response("Article not found", { status: 404 });
   }
+  
+  const authorName = escapeHtml(
+    article.author_name?.trim() || "Admin"
+  );
+
+  const authorPosition = escapeHtml(
+    article.author_position?.trim() || ""
+  );
+
+  const avatarPath = String(
+    article.author_avatar_url || ""
+  );
+
+  const authorAvatar = avatarPath.startsWith(
+    "/api/articles/image/"
+  )
+    ? escapeHtml(avatarPath)
+    : "";
+
+  const authorInitial = escapeHtml(
+    (article.author_name?.trim() || "Admin")
+      .charAt(0)
+      .toUpperCase()
+  );
 
   const title = escapeHtml(article.title);
   const seoTitle = escapeHtml(article.seo_title || article.title);
