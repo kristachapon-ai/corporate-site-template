@@ -253,9 +253,9 @@ h4 {
   background-repeat: no-repeat;
 
   display: flex;
-  align-items: center;
-
-  padding: 150px 0 90px;
+  align-items: flex-end;
+ min-height: 100vh;
+ padding: 150px 0 65px;
 
   background-image:
   url("../assets/images/hero/ng-training-cover.jpg");
@@ -287,7 +287,7 @@ h4 {
   position: relative;
   z-index: 2;
 
-  transform: translateY(80px);
+  transform: none;
 }
 
 .hero .ng-slash {
@@ -497,12 +497,12 @@ h4 {
   }
 
   .hero {
-   min-height: 100vh;
+  min-height: 100vh;
 
-    padding-top: 130px;
+  padding-top: 130px;
 
-    background-position: center;
-  }
+  background-position: center;
+}
 
   .hero-overlay {
     background:
