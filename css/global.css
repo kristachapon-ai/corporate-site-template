@@ -259,7 +259,7 @@ h4 {
   url("../assets/images/hero/ng-training-cover.jpg");
 
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-repeat: no-repeat;
 
   color: var(--color-white);
