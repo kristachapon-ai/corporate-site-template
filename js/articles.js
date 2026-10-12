@@ -101,11 +101,27 @@ document.addEventListener("DOMContentLoaded", async () => {
             </span>
           </div>
 
-          <div>
-            <span style="font-size:12px;color:#777;">
-              ID: ${escapeHTML(article.id)}
-            </span>
-          </div>
+          
+<div>
+  <a
+    href="/admin/article-editor.html?id=${encodeURIComponent(article.id)}"
+    style="
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 16px;
+      background:#231f20;
+      color:#ffffff;
+      text-decoration:none;
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    "
+  >
+    EDIT →
+  </a>
+</div>
+
 
         </div>
       `;
