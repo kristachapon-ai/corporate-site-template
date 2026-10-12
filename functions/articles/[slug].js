@@ -331,7 +331,7 @@ export async function onRequestGet({ env, params }) {
       line-height: 1.5;
       overflow-wrap: anywhere;
     }
-     .article-cover {
+     .cover {
       width: 100%;
       aspect-ratio: 1200 / 630;
       object-fit: cover;
