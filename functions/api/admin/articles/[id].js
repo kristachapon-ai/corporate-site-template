@@ -139,8 +139,13 @@ export async function onRequestPut({ request, env, params }) {
       cover_image_alt: clean(body.cover_image_alt, 300),
       seo_title: clean(body.seo_title, 70),
       meta_description: clean(body.meta_description, 160),
+      
       focus_keyword: clean(body.focus_keyword, 200),
+      author_name: clean(body.author_name, 150) || "Admin",
+      author_position: clean(body.author_position, 200),
+      author_avatar_url: clean(body.author_avatar_url, 1000),
       status: clean(body.status, 20)
+
     };
 
     if (!article.title) {
