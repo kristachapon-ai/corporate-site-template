@@ -75,9 +75,13 @@ export async function onRequestGet({ env, params }) {
 
   try {
     article = await env.DB.prepare(`
+      
       SELECT title, slug, excerpt, content,
              cover_image_url, cover_image_alt,
-             seo_title, meta_description, published_at
+             seo_title, meta_description,
+             author_name, author_position, author_avatar_url,
+             published_at
+
       FROM articles
       WHERE slug = ? AND status = 'published'
       LIMIT 1
