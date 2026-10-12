@@ -209,6 +209,7 @@ export async function onRequestPut({ request, env, params }) {
       }, 409);
     }
 
+   
     await env.DB.prepare(`
       UPDATE articles SET
         title = ?,
@@ -220,6 +221,9 @@ export async function onRequestPut({ request, env, params }) {
         seo_title = ?,
         meta_description = ?,
         focus_keyword = ?,
+        author_name = ?,
+        author_position = ?,
+        author_avatar_url = ?,
         status = ?,
         updated_at = CURRENT_TIMESTAMP,
         published_at = CASE
@@ -239,6 +243,9 @@ export async function onRequestPut({ request, env, params }) {
         article.seo_title,
         article.meta_description,
         article.focus_keyword,
+        article.author_name,
+        article.author_position,
+        article.author_avatar_url,
         article.status,
         article.status,
         id
