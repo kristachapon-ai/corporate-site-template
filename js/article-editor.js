@@ -242,48 +242,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-      if (response.status === 401) {
-        showMessage("Session หมดอายุ กรุณาเข้าสู่ระบบใหม่", true);
-        return;
-      }
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || "ไม่สามารถบันทึกบทความได้");
-      }
-
-      savedArticleId = result.id;
-
-      showMessage(
-        status === "published"
-          ? "บันทึกสถานะ Published สำเร็จ (ยังไม่มีหน้าเว็บบทความสาธารณะ)"
-          : "บันทึกฉบับร่างสำเร็จ"
-      );
-
-      field("article-status").value = status;
-
-      saveButton.textContent = "SAVED";
-      publishButton.textContent = "SAVED";
-
-    } catch (error) {
-      console.error("Article save error:", error);
-      showMessage(error.message, true);
-    } finally {
-      saving = false;
-
-      if (savedArticleId === null) {
-        saveButton.disabled = false;
-        publishButton.disabled = false;
-      }
-    }
-  }
-
-  saveButton.addEventListener("click", () => {
-    saveArticle("draft");
-  });
-
-  publishButton.addEventListener("click", () => {
-    saveArticle("published");
-  });
-});
+      
