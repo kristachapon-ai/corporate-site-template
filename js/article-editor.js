@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   let loading = false;
   let savedArticleId = null;
   let currentCoverUrl = "";
+  let currentAuthorAvatarUrl = "";
+
 
   function showMessage(message, isError = false) {
     messageBox.textContent = message;
@@ -54,7 +56,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       focus_keyword: getValue("article-keyword"),
       author_name: getValue("article-author-name") || "Admin",
       author_position: getValue("article-author-position"),
-      author_avatar_url: "",
+      author_avatar_url: currentAuthorAvatarUrl,
+
       status
 
     };
@@ -106,6 +109,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       setValue("article-seo-title", article.seo_title);
       setValue("article-meta-description", article.meta_description);
       setValue("article-keyword", article.focus_keyword);
+      
+      setValue("article-author-name", article.author_name || "Admin");
+      setValue("article-author-position", article.author_position);
+
+      currentAuthorAvatarUrl = article.author_avatar_url || "";
+
+      const authorPreview = field("article-author-avatar-preview");
+
+      if (authorPreview) {
+        if (currentAuthorAvatarUrl) {
+          authorPreview.src = currentAuthorAvatarUrl;
+          authorPreview.hidden = false;
+        } else {
+          authorPreview.removeAttribute("src");
+          authorPreview.hidden = true;
+        }
+      }
+
       setValue("article-status", article.status);
 
       currentCoverUrl = article.cover_image_url || "";
