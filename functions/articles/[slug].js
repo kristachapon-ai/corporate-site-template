@@ -121,6 +121,32 @@ export async function onRequestGet({ env, params }) {
   <meta property="og:url" content="${canonical}">
   ${safeCover ? `<meta property="og:image" content="${safeCover}">` : ""}
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <script type="application/ld+json">
+  ${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.meta_description || article.excerpt || "",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical
+    },
+    ...(safeCover ? { image: [safeCover] } : {}),
+    ...(publishedDate ? { datePublished: publishedDate } : {}),
+    author: {
+      "@type": "Organization",
+      name: "NG Training",
+      url: SITE_URL
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "NG Training",
+      url: SITE_URL
+    }
+  }).replace(/</g, "\\u003c")}
+  </script>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/variables.css">
