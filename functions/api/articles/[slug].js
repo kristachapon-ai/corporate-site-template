@@ -33,7 +33,7 @@ export async function onRequestGet({ env, params }) {
       }, 503);
     }
 
-   <CodeBlock language="javascript" editable>
+  
     const article = await env.DB.prepare(`
       SELECT
         id,
@@ -58,7 +58,7 @@ export async function onRequestGet({ env, params }) {
     `)
       .bind(slug)
       .first();
-</CodeBlock>
+
 
     if (!article) {
       return json({
