@@ -267,6 +267,66 @@ export async function onRequestGet({ env, params }) {
     }
 
     .cover {
+      
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 20px 0 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--color-primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+      font-weight: 700;
+      font-family: var(--font-heading);
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .author-label {
+      color: var(--color-text-muted);
+      font-size: 11px;
+    }
+
+    .author-name {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .author-position {
+      color: var(--color-text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
       width: 100%;
       aspect-ratio: 1200 / 630;
       object-fit: cover;
