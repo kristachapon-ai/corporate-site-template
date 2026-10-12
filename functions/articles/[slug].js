@@ -455,6 +455,24 @@ export async function onRequestGet({ env, params }) {
       <div class="eyebrow">NG TRAINING | INSIGHTS</div>
       <h1>${title}</h1>
       ${publishedDate ? `<time datetime="${escapeHtml(publishedDate)}">${escapeHtml(publishedDate)}</time>` : ""}
+      
+      <div class="article-author">
+        <div class="author-avatar">
+          ${authorAvatar
+            ? `<img src="${authorAvatar}" alt="รูปผู้เขียน ${authorName}" loading="lazy">`
+            : `<span aria-hidden="true">${authorInitial}</span>`
+          }
+        </div>
+        <div class="author-info">
+          <span class="author-label">เขียนโดย</span>
+          <strong class="author-name">${authorName}</strong>
+          ${authorPosition
+            ? `<span class="author-position">${authorPosition}</span>`
+            : ""
+          }
+        </div>
+      </div>
+
       <p class="excerpt">${escapeHtml(article.excerpt)}</p>
       ${safeCover ? `<img class="cover" src="${safeCover}" alt="${escapeHtml(article.cover_image_alt || article.title)}">` : ""}
       <div class="content">${renderContent(article.content)}</div>
