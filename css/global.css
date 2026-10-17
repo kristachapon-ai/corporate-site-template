@@ -4008,3 +4008,95 @@ a.contact-channel:hover .contact-channel-arrow {
     margin-top: 32px;
   }
 }
+
+/* =====================================
+   NG THAILAND — SOCIAL MEDIA HEADER
+===================================== */
+
+.ng-header-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ng-header-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.ng-header-social a:hover {
+  background: #f4511e;
+  border-color: #f4511e;
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.ng-header-social a:focus-visible {
+  outline: 2px solid #f4511e;
+  outline-offset: 3px;
+}
+
+/* Keep navigation from being crowded */
+@media (max-width: 1200px) {
+  .ng-header-social {
+    gap: 5px;
+  }
+
+  .ng-header-social a {
+    width: 32px;
+    height: 32px;
+    font-size: 10px;
+  }
+}
+
+/* Mobile: place social links beside menu */
+@media (max-width: 900px) {
+  .ng-header-social {
+    margin-left: auto;
+    gap: 5px;
+  }
+
+  .ng-header-social a {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+  }
+
+  .header-inner .menu-toggle {
+    margin-left: 0;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .ng-header-social {
+    gap: 3px;
+  }
+
+  .ng-header-social a {
+    width: 27px;
+    height: 30px;
+    font-size: 8px;
+  }
+}
