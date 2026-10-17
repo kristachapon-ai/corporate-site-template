@@ -4100,3 +4100,175 @@ a.contact-channel:hover .contact-channel-arrow {
     font-size: 8px;
   }
 }
+
+/* =========================================
+   NG THAILAND — SOCIAL MEDIA SECTION
+========================================= */
+
+.ng-social-section {
+  padding: 90px 0;
+  background: #f6f6f6;
+  color: #231f20;
+}
+
+.ng-social-section .ng-slash {
+  width: 52px;
+  height: 6px;
+  background: #f4511e;
+  transform: skewX(-20deg);
+  margin-bottom: 24px;
+}
+
+.ng-social-section .section-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #f4511e;
+  margin-bottom: 12px;
+}
+
+.ng-social-title {
+  font-size: clamp(34px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin: 0 0 18px;
+}
+
+.ng-social-title span {
+  color: #f4511e;
+}
+
+.ng-social-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 42px;
+}
+
+.ng-social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ng-social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 230px;
+  padding: 28px;
+
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+
+  color: #231f20;
+  text-decoration: none;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ng-social-card:hover {
+  background: #f4511e;
+  color: #ffffff;
+  transform: translateY(-7px);
+  box-shadow: 0 18px 36px rgba(244, 81, 30, 0.2);
+}
+
+.ng-social-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #231f20;
+  color: #ffffff;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.ng-social-card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.ng-social-card:hover .ng-social-card-icon {
+  background: #ffffff;
+  color: #f4511e;
+}
+
+.ng-social-card-name {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  margin-top: 30px;
+}
+
+.ng-social-card-action {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #f4511e;
+  margin-top: 10px;
+}
+
+.ng-social-card:hover .ng-social-card-action {
+  color: #ffffff;
+}
+
+.ng-social-card:focus-visible {
+  outline: 3px solid #f4511e;
+  outline-offset: 4px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .ng-social-section {
+    padding: 65px 0;
+  }
+
+  .ng-social-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .ng-social-section {
+    padding: 50px 0;
+  }
+
+  .ng-social-grid {
+    gap: 12px;
+  }
+
+  .ng-social-card {
+    min-height: 180px;
+    padding: 18px;
+  }
+
+  .ng-social-card-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .ng-social-card-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ng-social-card-name {
+    font-size: 17px;
+    margin-top: 20px;
+  }
+
+  .ng-social-card-action {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+}
