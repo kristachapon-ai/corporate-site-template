@@ -4272,3 +4272,74 @@ a.contact-channel:hover .contact-channel-arrow {
     letter-spacing: 0.3px;
   }
 }
+
+/* =========================================
+   NG THAILAND — CONTACT SOCIAL MEDIA
+========================================= */
+
+.ng-contact-social {
+  margin-top: 72px;
+  padding: 48px 0 20px;
+  border-top: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.ng-contact-social .ng-slash {
+  width: 52px;
+  height: 6px;
+  margin-bottom: 24px;
+  background: #f4511e;
+  transform: skewX(-20deg);
+}
+
+.ng-contact-social .section-label {
+  margin-bottom: 12px;
+  color: #f4511e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.ng-contact-social-title {
+  margin: 0 0 18px;
+  font-size: clamp(34px, 5vw, 60px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+}
+
+.ng-contact-social-title span {
+  color: #f4511e;
+}
+
+.ng-contact-social-description {
+  margin-bottom: 36px;
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+/* Match social cards to the Contact background */
+.ng-contact-social .ng-social-card {
+  background: #ffffff;
+  color: #231f20;
+}
+
+.ng-contact-social .ng-social-card:hover {
+  background: #f4511e;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .ng-contact-social {
+    margin-top: 48px;
+    padding-top: 36px;
+  }
+
+  .ng-contact-social-title {
+    font-size: 36px;
+  }
+
+  .ng-contact-social-description {
+    font-size: 14px;
+  }
+}
