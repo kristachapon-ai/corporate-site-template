@@ -25,6 +25,28 @@
     name="description"
     content="NG Training - Corporate Training, Team Building, Sport Day and Workshop"
   >
+<style>
+
+/* NG SERVICES 2026 — scoped to new cards only */
+.ng-course-area{padding-top:clamp(60px,7vw,110px);padding-bottom:95px;scroll-margin-top:100px;font-family:Prompt,sans-serif}
+.ng-course-heading{display:flex;justify-content:space-between;align-items:end;gap:25px;padding-bottom:25px;border-bottom:1px solid #dedede;margin-bottom:28px}
+.ng-course-kicker{font:800 13px Montserrat,sans-serif;letter-spacing:.14em;color:#fa4e22;margin-bottom:12px}
+.ng-course-heading h2{font:900 clamp(35px,5vw,70px)/1 Montserrat,sans-serif;letter-spacing:-.055em;color:#242122;margin:0}
+.ng-course-heading h2 span{color:#fa4e22}.ng-course-subtitle{font-size:16px;color:#666;margin-top:14px}
+.ng-course-hint{text-align:right;font:800 12px/1.8 Montserrat,sans-serif;color:#242122;letter-spacing:.05em}.ng-course-hint span{font:400 13px Prompt,sans-serif;color:#888}
+.ng-course-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.ng-course-card{display:flex;flex-direction:column;min-width:0;min-height:320px;padding:25px 22px 22px;border:1px solid #e9e6e4;border-radius:16px;background:#fff;box-shadow:0 5px 24px rgba(24,20,20,.045);transition:transform .2s,border-color .2s,box-shadow .2s}
+.ng-course-card:hover{transform:translateY(-4px);border-color:#f8b8a7;box-shadow:0 14px 30px rgba(24,20,20,.08)}
+.ng-course-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.ng-course-icon{display:grid;place-items:center;width:47px;height:47px;border-radius:12px;background:#fff0eb;color:#fa4e22;font-size:29px;font-weight:700}.ng-course-index{font:700 11px Montserrat,sans-serif;letter-spacing:.12em;color:#aaa}
+.ng-course-card h3{font:800 clamp(15px,1.3vw,19px)/1.25 Montserrat,sans-serif;letter-spacing:-.025em;color:#242122;overflow-wrap:anywhere;margin:0 0 8px}
+.ng-course-th{font-size:14px;font-weight:600;color:#fa4e22;margin:0 0 14px}.ng-course-desc{font-size:13px;line-height:1.75;color:#777;margin:0 0 20px}.ng-course-spacer{flex:1}
+.ng-course-pdf{width:100%;display:flex;align-items:center;gap:9px;border:1px solid #f6c5b8;background:#fff8f5;color:#e64c23;border-radius:9px;padding:12px;font:700 10px Montserrat,sans-serif;text-align:left;cursor:not-allowed;opacity:.85}.ng-course-pdf>span{font-size:21px}.ng-course-pdf small{margin-left:auto;white-space:nowrap;font:500 11px Prompt,sans-serif}
+.ng-course-activities{margin-top:auto}.ng-course-activities-label{font:800 10px Montserrat,sans-serif;letter-spacing:.1em;color:#aaa;margin:0 0 9px}
+.ng-course-detail{border-top:1px solid #eee}.ng-course-detail summary{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 0;cursor:pointer;list-style:none}.ng-course-detail summary::-webkit-details-marker{display:none}.ng-course-detail summary strong{display:block;font:700 12px/1.4 Montserrat,sans-serif;color:#242122}.ng-course-detail summary small{display:block;font:400 12px/1.6 Prompt,sans-serif;color:#777;margin-top:3px}.ng-course-down{font-size:23px;color:#fa4e22;transition:transform .2s}.ng-course-detail[open] .ng-course-down{transform:rotate(180deg)}.ng-course-detail-body{padding:10px 12px;margin-bottom:10px;background:#fff3ef;border-radius:7px;font-size:11px;color:#dc542d}
+.ng-course-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:30px;font-size:13px;color:#777}.ng-course-bottom a{color:#f45127;text-decoration:none;font-weight:700}
+@media(max-width:1100px){.ng-course-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:780px){.ng-course-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ng-course-heading{align-items:start;flex-direction:column}.ng-course-hint{text-align:left}}@media(max-width:520px){.ng-course-grid{grid-template-columns:1fr}.ng-course-card{min-height:0}.ng-course-bottom{flex-direction:column;align-items:start}.ng-course-area{padding-bottom:55px}}
+
+</style>
 </head>
 
 <body>
@@ -271,163 +293,64 @@
   </div>
 
 
-  <div class="container about-stats">
-
-    <div class="stat-item">
-      <strong>TRAINING</strong>
-      <span>Learning that creates impact</span>
-    </div>
-
-    <div class="stat-item">
-      <strong>TEAM BUILDING</strong>
-      <span>Stronger people. Stronger teams.</span>
-    </div>
-
-    <div class="stat-item">
-      <strong>SPORT DAY</strong>
-      <span>Energy, teamwork and engagement</span>
-    </div>
-
-    <div class="stat-item">
-      <strong>WORKSHOP</strong>
-      <span>Creative learning experiences</span>
-    </div>
-
-  </div>
-
-</section>
-    <!-- SERVICES -->
-<section class="services-section" id="services">
-
-  <div class="container">
-
-    <div class="services-header">
-
-      <div>
-        <div class="ng-slash"></div>
-
-        <p class="section-label">
-          WHAT WE DO
-        </p>
-
-        <h2 class="services-title">
-          EXPERIENCES THAT<br>
-          <span>MOVE PEOPLE.</span>
-        </h2>
-      </div>
-
-      <p class="services-intro">
-        เราออกแบบกิจกรรมและการเรียนรู้สำหรับองค์กร
-        โดยให้ความสำคัญกับการมีส่วนร่วม ความสนุก
-        และผลลัพธ์ที่สามารถนำกลับไปใช้ได้จริง
-      </p>
-
-    </div>
-
-
-    <div class="services-grid">
-
-      <!-- SERVICE 01 -->
-      <article class="service-card">
-
-        <span class="service-number">01</span>
-
-        <div class="service-card-content">
-          <p class="service-type">LEARNING</p>
-
-          <h3>
-            CORPORATE<br>
-            TRAINING
-          </h3>
-
-          <p>
-            หลักสูตรและกิจกรรมการเรียนรู้
-            เพื่อพัฒนาทักษะบุคลากรและทีม
-            ให้พร้อมรับการเปลี่ยนแปลงขององค์กร
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- SERVICE 02 -->
-      <article class="service-card">
-
-        <span class="service-number">02</span>
-
-        <div class="service-card-content">
-          <p class="service-type">TEAMWORK</p>
-
-          <h3>
-            TEAM<br>
-            BUILDING
-          </h3>
-
-          <p>
-            กิจกรรมสร้างทีมที่ออกแบบให้ทุกคน
-            ได้สื่อสาร ทำงานร่วมกัน และสร้าง
-            ความสัมพันธ์ผ่านประสบการณ์จริง
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- SERVICE 03 -->
-      <article class="service-card">
-
-        <span class="service-number">03</span>
-
-        <div class="service-card-content">
-          <p class="service-type">ENGAGEMENT</p>
-
-          <h3>
-            SPORT<br>
-            DAY
-          </h3>
-
-          <p>
-            Sport Day รูปแบบสร้างสรรค์
-            สนุก เข้าถึงง่าย และออกแบบให้เหมาะ
-            กับคนหลากหลายช่วงวัยในองค์กร
-          </p>
-
-        </div>
-
-      </article>
-
-
-      <!-- SERVICE 04 -->
-      <article class="service-card">
-
-        <span class="service-number">04</span>
-
-        <div class="service-card-content">
-          <p class="service-type">CREATIVE</p>
-
-          <h3>
-            WORKSHOP &<br>
-            ACTIVITIES
-          </h3>
-
-          <p>
-            Workshop และกิจกรรมพิเศษ
-            ที่สามารถออกแบบตามโจทย์
-            วัฒนธรรม และเป้าหมายของแต่ละองค์กร
-          </p>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
+<!-- NG SERVICES 2026 : BILINGUAL + PDF PLACEHOLDERS -->
+<div class="container ng-course-area" id="services">
+  <div class="ng-course-heading"><div><p class="ng-course-kicker">EXPLORE NG TRAINING</p><h2>OUR <span>SERVICES.</span></h2><p class="ng-course-subtitle">บริการและหลักสูตรของเรา — เรียนรู้ สร้างทีม และพัฒนาองค์กร</p></div><p class="ng-course-hint">COURSE OUTLINE / PDF DOWNLOAD<br><span>เอกสารประกอบหลักสูตรจะเปิดให้ดาวน์โหลดเร็ว ๆ นี้</span></p></div>
+  <div class="ng-course-grid">
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">▣</span><span class="ng-course-index">01 / 12</span></div><h3>COURSE OUTLINES &amp; TRAINING PROGRAMS</h3><p class="ng-course-th">หลักสูตรและโปรแกรมฝึกอบรม</p><p class="ng-course-desc">หลักสูตรที่ออกแบบให้เหมาะกับเป้าหมายและบริบทของแต่ละองค์กร</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">✦</span><span class="ng-course-index">02 / 12</span></div><h3>TEAM BUILDING</h3><p class="ng-course-th">กิจกรรมสร้างทีมสัมพันธ์</p><p class="ng-course-desc">สร้างความร่วมมือ ความไว้วางใจ และการสื่อสารผ่านกิจกรรม</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">★</span><span class="ng-course-index">03 / 12</span></div><h3>SPORTS DAY</h3><p class="ng-course-th">กิจกรรมกีฬาสีองค์กร</p><p class="ng-course-desc">เติมพลัง ความสนุก และความสัมพันธ์ในทีม</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">▤</span><span class="ng-course-index">04 / 12</span></div><h3>IN-HOUSE TRAINING</h3><p class="ng-course-th">การฝึกอบรมภายในองค์กร</p><p class="ng-course-desc">พัฒนาทักษะบุคลากรด้วยหลักสูตรที่ปรับให้เหมาะกับองค์กร</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">↗</span><span class="ng-course-index">05 / 12</span></div><h3>ORGANIZATION DEVELOPMENT (OD)</h3><p class="ng-course-th">การพัฒนาองค์กร</p><p class="ng-course-desc">ออกแบบการเรียนรู้และกระบวนการเพื่อขับเคลื่อนองค์กร</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">◎</span><span class="ng-course-index">06 / 12</span></div><h3>SENIOR LEARNING &amp; DEVELOPMENT</h3><p class="ng-course-th">กิจกรรมการเรียนรู้สำหรับผู้สูงอายุ</p><p class="ng-course-desc">เรียนรู้อย่างสร้างสรรค์และทันโลกในทุกช่วงวัย</p>
+<div class="ng-course-activities"><p class="ng-course-activities-label">PROGRAMS / กิจกรรมย่อย</p>
+<details class="ng-course-detail"><summary><span><strong>Active Learning for Seniors</strong><small>การเรียนรู้แบบมีส่วนร่วมสำหรับผู้สูงอายุ</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+<details class="ng-course-detail"><summary><span><strong>AI Literacy for Seniors</strong><small>การเรียนรู้ AI สำหรับผู้สูงอายุ</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+</div>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">✳</span><span class="ng-course-index">07 / 12</span></div><h3>YOUTH DEVELOPMENT PROGRAMS</h3><p class="ng-course-th">กิจกรรมพัฒนาเยาวชน</p><p class="ng-course-desc">สร้างความมั่นใจ ทักษะชีวิต และภาวะผู้นำ</p>
+<div class="ng-course-activities"><p class="ng-course-activities-label">PROGRAMS / กิจกรรมย่อย</p>
+<details class="ng-course-detail"><summary><span><strong>Leadership Camp</strong><small>ค่ายพัฒนาภาวะผู้นำ</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+<details class="ng-course-detail"><summary><span><strong>Orientation Programs</strong><small>กิจกรรมปฐมนิเทศ</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+</div>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">◉</span><span class="ng-course-index">08 / 12</span></div><h3>WELLNESS PROGRAMS</h3><p class="ng-course-th">กิจกรรมส่งเสริมสุขภาวะ</p><p class="ng-course-desc">ส่งเสริมความผ่อนคลาย สมดุล และความเป็นอยู่ที่ดี</p>
+<div class="ng-course-activities"><p class="ng-course-activities-label">PROGRAMS / กิจกรรมย่อย</p>
+<details class="ng-course-detail"><summary><span><strong>Himalayan Singing Bowls</strong><small>กิจกรรมขันร้องทิเบต</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+<details class="ng-course-detail"><summary><span><strong>Sound Healing</strong><small>กิจกรรมผ่อนคลายด้วยเสียง</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+<details class="ng-course-detail"><summary><span><strong>Mandala Art</strong><small>ศิลปะมันดาลา</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+</div>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">◇</span><span class="ng-course-index">09 / 12</span></div><h3>COACHING PROGRAMS</h3><p class="ng-course-th">โปรแกรมโค้ชเพื่อพัฒนาศักยภาพ</p><p class="ng-course-desc">ชวนสำรวจแนวคิดและเป้าหมายผ่านกระบวนการโค้ช</p>
+<div class="ng-course-activities"><p class="ng-course-activities-label">PROGRAMS / กิจกรรมย่อย</p>
+<details class="ng-course-detail"><summary><span><strong>Card-Based Coaching</strong><small>การโค้ชผ่านการ์ด</small></span><span class="ng-course-down" aria-hidden="true">↓</span></summary><div class="ng-course-detail-body"><span>PDF • COMING SOON / รอเอกสาร PDF</span></div></details>
+</div>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">△</span><span class="ng-course-index">10 / 12</span></div><h3>COMPANY OUTINGS</h3><p class="ng-course-th">กิจกรรมท่องเที่ยวและสร้างสัมพันธ์องค์กร</p><p class="ng-course-desc">สร้างประสบการณ์ร่วมและความทรงจำที่ดีนอกสถานที่</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">✧</span><span class="ng-course-index">11 / 12</span></div><h3>STAFF PARTIES</h3><p class="ng-course-th">งานเลี้ยงและกิจกรรมพนักงาน</p><p class="ng-course-desc">ออกแบบบรรยากาศสนุกสนานและสร้างความผูกพัน</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+<article class="ng-course-card"><div class="ng-course-card-top"><span class="ng-course-icon" aria-hidden="true">✎</span><span class="ng-course-index">12 / 12</span></div><h3>ACTIVITY DESIGN</h3><p class="ng-course-th">บริการออกแบบกิจกรรมเฉพาะองค์กร</p><p class="ng-course-desc">สร้างสรรค์กิจกรรมตามโจทย์ วัฒนธรรม และเป้าหมายขององค์กร</p>
+<div class="ng-course-spacer"></div><button class="ng-course-pdf" type="button" disabled aria-label="เอกสาร PDF ยังไม่พร้อมดาวน์โหลด"><span>↓</span> DOWNLOAD COURSE PDF <small>เร็ว ๆ นี้</small></button>
+</article>
+</div><div class="ng-course-bottom"><span>เอกสาร PDF อยู่ระหว่างจัดเตรียม / PDF documents are coming soon.</span><a href="/quote/">สอบถามหลักสูตร / REQUEST A QUOTE ↗</a></div></div>
+<!-- END NG SERVICES 2026 -->
 
 </section>
-    <!-- =========================
+
+<!-- =========================
      CLIENTS
 ========================== -->
 
