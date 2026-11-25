@@ -1074,6 +1074,8 @@
 
 
     <div class="footer-bottom">
+      <button type="button" id="ng-cookie-settings">Cookie Settings / ตั้งค่าคุกกี้</button>
+      <a href="/privacy/">Privacy Policy</a>
 
       <span>
         © 2026 NG TRAINING
@@ -1155,10 +1157,7 @@
 </div>
 
 
-<script
-  async
-  src="https://www.tiktok.com/embed.js"
-></script>
+
 
 <script>
   const menuToggle = document.querySelector(".menu-toggle");
@@ -1683,6 +1682,31 @@
 </script>
   
 <script src="/js/home-articles.js" defer></script>
+
+<style>
+#ng-consent[hidden],#ng-consent-options[hidden]{display:none!important}
+#ng-consent{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#fff;color:#222;border-top:4px solid #ff4e1e;box-shadow:0 -8px 40px #0002;padding:24px clamp(16px,4vw,60px);font-family:inherit;max-height:85vh;overflow:auto}
+#ng-consent .ngc-row{display:flex;align-items:center;gap:24px;justify-content:space-between}
+#ng-consent h2{font-size:clamp(20px,2vw,28px);font-weight:800;margin:0 0 8px;color:#171717}
+#ng-consent p{font-size:14px;line-height:1.65;margin:4px 0;color:#333}
+#ng-consent a{color:#b92e09;text-decoration:underline}
+#ng-consent .ngc-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+#ng-consent button,#ng-cookie-settings{font:inherit;cursor:pointer}
+#ng-consent button{border:1px solid #ddd;background:#fff;color:#222;padding:11px 16px;border-radius:5px;font-size:13px;font-weight:700}
+#ng-consent button[data-choice="all"],#ng-consent button[data-choice="save"]{background:#d63b12;color:white;border-color:#d63b12}
+#ng-consent-options{margin-top:16px;border-top:1px solid #ddd;padding-top:12px}
+#ng-consent-options label{display:block;padding:7px 0;font-size:14px}
+#ng-cookie-settings{background:none;border:0;color:inherit;text-decoration:underline;font-size:inherit}
+@media(max-width:900px){#ng-consent .ngc-row{flex-direction:column;align-items:stretch;gap:12px}#ng-consent .ngc-actions{flex-shrink:1}#ng-consent button{flex:1 1 auto}}
+</style>
+<section id="ng-consent" aria-label="Cookie preferences" hidden>
+<div class="ngc-row"><div><h2>WE VALUE YOUR PRIVACY.</h2><p lang="th">NG Training ใช้พื้นที่จัดเก็บข้อมูลที่จำเป็นเพื่อให้เว็บไซต์ทำงานได้ และให้คุณเลือกอนุญาตการวิเคราะห์และการตลาดได้ตามต้องการ</p><p>We use essential storage to operate our website. You can choose whether to allow optional analytics and marketing technologies.</p><p><a href="/privacy/">Privacy Policy / นโยบายความเป็นส่วนตัว</a></p></div>
+<div class="ngc-actions"><button type="button" data-choice="all">Accept All</button><button type="button" data-choice="reject">Reject Optional</button><button type="button" data-choice="custom" aria-expanded="false" aria-controls="ng-consent-options">Customize</button></div></div>
+<div id="ng-consent-options" hidden><label><input type="checkbox" checked disabled> Essential / จำเป็น (Always active)</label><label><input type="checkbox" id="ngc-analytics"> Analytics / วิเคราะห์การใช้งาน</label><label><input type="checkbox" id="ngc-marketing"> Marketing &amp; social media / การตลาดและโซเชียลมีเดีย</label><button type="button" data-choice="save">Save Preferences / บันทึกการตั้งค่า</button></div>
+</section>
+<script>
+(()=>{const key='ng-cookie-consent-v1',banner=document.getElementById('ng-consent'),options=document.getElementById('ng-consent-options'),analytics=document.getElementById('ngc-analytics'),marketing=document.getElementById('ngc-marketing'),custom=banner.querySelector('[data-choice="custom"]'),settings=document.getElementById('ng-cookie-settings');let choice=null;try{const v=JSON.parse(localStorage.getItem(key));if(v&&typeof v.analytics==='boolean'&&typeof v.marketing==='boolean'&&Date.now()-v.time<180*86400000)choice=v;}catch(e){}function apply(){window.ngCookieConsent=choice||{analytics:false,marketing:false};window.dispatchEvent(new CustomEvent('ng:consent',{detail:window.ngCookieConsent}));}function open(){analytics.checked=!!choice?.analytics;marketing.checked=!!choice?.marketing;banner.hidden=false;options.hidden=true;custom.setAttribute('aria-expanded','false');}function save(a,m){choice={analytics:a,marketing:m,time:Date.now()};try{localStorage.setItem(key,JSON.stringify(choice));}catch(e){}banner.hidden=true;apply();}banner.addEventListener('click',e=>{const b=e.target.closest('[data-choice]');if(!b)return;switch(b.dataset.choice){case'all':save(true,true);break;case'reject':save(false,false);break;case'custom':options.hidden=!options.hidden;custom.setAttribute('aria-expanded',String(!options.hidden));break;case'save':save(analytics.checked,marketing.checked);break;}});settings.addEventListener('click',()=>{open();options.hidden=false;custom.setAttribute('aria-expanded','true');custom.focus();});apply();if(!choice)open();})();
+</script>
 
 </body>
 </html>
