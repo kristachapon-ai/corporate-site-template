@@ -56,6 +56,11 @@
   .about-section + .clients-section { padding-top: 25px !important; }
   .about-section .ng-course-area { padding-bottom: 15px !important; }
 }
+
+/* NG hero video */
+#home .ng-hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;pointer-events:none}
+#home .hero-overlay{z-index:1;pointer-events:none}
+@media(prefers-reduced-motion:reduce){#home .ng-hero-video{display:none}}
 </style>
 </head>
 
@@ -192,6 +197,10 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
+      <video class="ng-hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/images/hero/ng-training-cover.jpg">
+        <source src="ng-hero.mp4" type="video/mp4">
+      </video>
+
 
       <div class="hero-overlay"></div>
 
