@@ -4343,3 +4343,15 @@ a.contact-channel:hover .contact-channel-arrow {
     font-size: 14px;
   }
 }
+
+
+/* TEAM — tighter portrait crop, preserving original image files */
+#team .team-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+  transform-origin: center 78%;
+  transform: scale(1.55);
+}
+#team .team-card:hover .team-photo img {
+  transform: scale(1.60);
+}
