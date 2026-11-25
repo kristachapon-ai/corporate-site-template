@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="css/variables.css">
 <link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/global.css?v=20261125-2">
   <title>รับจัด Team Building และ Sport Day องค์กร | NG Thailand</title>
 
   <meta
@@ -94,6 +94,16 @@ html{scroll-padding-top:112px}
 }
 @media(min-width:901px) and (max-width:1150px){.site-header .header-inner{width:calc(100% - 24px);padding-inline:10px;gap:6px}.site-header .ng-header-social{position:absolute;right:12px;top:calc(100% + 8px)}.site-header .header-contact{font-size:.7rem;padding-inline:10px}}
 @media(max-width:900px){.site-header{top:12px;height:66px}.site-header .header-inner{width:calc(100% - 24px);padding:7px 12px;gap:8px;border-radius:10px}.site-header .main-nav{margin-left:0}.site-header .brand-logo{height:46px}.site-header .menu-toggle{border-radius:7px;transform:none}.site-header .ng-header-social a{border-radius:50%}}
+</style>
+<style id="ng-mobile-team-fix">
+@media (max-width: 900px) {
+  #team .team-photo { height: auto !important; aspect-ratio: 4 / 5; display: block !important; }
+  #team .team-photo img, #team .team-card:hover .team-photo img {
+    display: block !important; width: 100% !important; height: 100% !important;
+    object-fit: contain !important; object-position: center top !important;
+    transform: none !important; scale: none !important; transition: none !important;
+  }
+}
 </style>
 </head>
 
